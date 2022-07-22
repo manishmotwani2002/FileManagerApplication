@@ -1,0 +1,8 @@
+.menu-root {
+  background-color: gainsboro;
+}
+.children-item {
+  border-left: 0.2rem solid gray;
+  display: inline-block;
+  margin-left: 10%;
+}

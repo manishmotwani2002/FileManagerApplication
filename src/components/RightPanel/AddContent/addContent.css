@@ -1,0 +1,40 @@
+.form-header {
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  text-align: center;
+  font-size: xx-large;
+}
+.create-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.cross {
+  justify-content: end;
+  width: 40px;
+  height: 40px;
+}
+
+.heading {
+  flex-grow: 1;
+}
+
+.toggle_btn_wrapper {
+  display: inline-block;
+  padding: 2%;
+
+  text-align: center;
+  outline: none;
+  font-size: large;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  /* border-bottom-width: 2px; */
+  transition: all 0.3s ease;
+  /* background-color: skyblue; */
+  /* color: white; */
+}
+
+.toggle_btn {
+  padding: 2%;
+}

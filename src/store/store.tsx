@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import foldersReducer from "./folderSlice";
+import directoryReducer from "./directorySlice";
 
 export const store = configureStore({
   reducer: {
     folders: foldersReducer,
+    directory: directoryReducer,
   },
 });
 

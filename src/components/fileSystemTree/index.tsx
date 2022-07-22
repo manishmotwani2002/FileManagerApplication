@@ -1,12 +1,19 @@
 import React from "react";
 import SystemTreeItem from "./SystemTreeItem";
+import "./index.css";
 
 function SystemTree() {
   return (
-    <div>
+    <div className="menu-root">
       Root
-      <div>Menu Items will display here</div>
-      <SystemTreeItem />
+      <div>
+        <SystemTreeItem />
+        <div className="children-item">
+          <SystemTreeItem />
+          <SystemTreeItem />
+          <SystemTreeItem />
+        </div>
+      </div>
     </div>
   );
 }

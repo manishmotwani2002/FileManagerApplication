@@ -1,4 +1,43 @@
 .root {
   display: flex;
   flex-direction: row;
+  margin: 4%;
+}
+.system-tree {
+  width: 20%;
+}
+
+.children-item {
+  width: 80%;
+  flex-grow: inherit;
+  justify-content: center;
+}
+
+.icon {
+  height: 10%;
+  width: 10%;
+}
+
+input {
+  padding: 2%;
+  outline: none;
+  font-size: large;
+  margin: 2%;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+
+button {
+  padding: 2%;
+  outline: none;
+  font-size: large;
+  margin: 2%;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+  background-color: skyblue;
+  color: white;
 }
