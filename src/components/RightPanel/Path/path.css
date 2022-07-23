@@ -1,4 +1,6 @@
-.root {
+.path-container {
   display: flex;
+  align-items: center;
   flex-direction: row;
+  padding: 1% 0%;
 }

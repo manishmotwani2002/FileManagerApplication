@@ -8,9 +8,21 @@
   text-align: center;
 }
 
-.folder-item {
+.add-item {
   position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+  /* top: 50%; */
+  /* transform: translateY(-50%); */
   font-size: xx-large;
+}
+
+.files-container {
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: center; */
+  /* flex-flow: row; */
+  /* background-color: darkblue; */
+}
+
+.folder-item {
+  margin: 2%;
 }

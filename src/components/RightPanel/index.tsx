@@ -7,12 +7,16 @@ import AddContent from "./AddContent/AddContent";
 function RightPanel({ currentFolder }: any) {
   return (
     <div>
-      <div className="header">
+      <div className="header-container">
         <div>
           <Path />
         </div>
         <div>
-          <input type="text" placeholder="enter your query here!!" />
+          <input
+            className="input"
+            type="text"
+            placeholder="enter your query here!!"
+          />
         </div>
       </div>
       <div>

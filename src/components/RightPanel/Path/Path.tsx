@@ -3,10 +3,10 @@ import "./path.css";
 
 function Path() {
   return (
-    <div className="root">
+    <div className="path-container">
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="icon"
+        className="icon "
         viewBox="0 0 20 20"
         fill="currentColor"
       >

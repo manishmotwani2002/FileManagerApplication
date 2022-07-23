@@ -1,5 +1,7 @@
-.header {
+.header-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding: 2%;
+  border-bottom: 2px solid gray;
 }

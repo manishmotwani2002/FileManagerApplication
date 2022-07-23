@@ -22,19 +22,23 @@ function Content({ currentFolder }: any) {
   }, [currentFolder]);
 
   return (
-    <div>
+    <div className="files-container">
       <div
-        className="add-item "
+        className="add-item folder-item"
         onClick={() => {
           handleAdd();
         }}
       >
-        <div className="folder-item">+</div>
+        +{/* <div className="add-item ">+</div> */}
       </div>
       {popUp && <AddContent setPopUp={setPopUp} />}
 
       {files?.map((file, index) => {
-        return <FileCard imageLink={file.urls.small} />;
+        return (
+          <div className="folder-item">
+            <FileCard imageLink={file.urls.small} />
+          </div>
+        );
       })}
     </div>
   );

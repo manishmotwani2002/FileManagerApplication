@@ -1,10 +1,28 @@
 .root {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: gray;
   display: flex;
   flex-direction: row;
-  margin: 4%;
+  margin: auto;
+  /* margin-top: auto; */
+  /* margin: 4%; */
+  max-height: 90vh;
+  max-width: 90vw;
+  border-radius: 0%;
+  box-shadow: 5px 6px 31px 0px #b4b4b4;
+  overflow: hidden;
+  padding: 4% 0%;
 }
+
+.right-panel {
+  flex-grow: 1;
+  overflow-y: scroll;
+  margin: 0 4%;
+}
+
 .system-tree {
   width: 20%;
+  height: 100%;
 }
 
 .children-item {
@@ -18,14 +36,14 @@
   width: 10%;
 }
 
-input {
-  padding: 2%;
+.input {
+  padding: 4%;
   outline: none;
   font-size: large;
   margin: 2%;
   border-radius: 10px;
   border: 1px solid #ccc;
-  border-bottom-width: 2px;
+  /* border-bottom-width: 2px; */
   transition: all 0.3s ease;
 }
 
