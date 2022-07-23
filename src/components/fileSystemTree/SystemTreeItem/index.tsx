@@ -1,11 +1,11 @@
 import React from "react";
 import "./index.css";
 
-function SystemTreeItem() {
+function SystemTreeItem({ name = "New Folder" }) {
   return (
     <div>
       <div className="root" onClick={() => {}}>
-        <div>New Folder</div>
+        <div>{name}</div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="icon"

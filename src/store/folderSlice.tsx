@@ -24,11 +24,7 @@ export const foldersSlice = createSlice({
   initialState,
   reducers: {
     addFolder: (state, actions) => {
-      console.log("check dispatch", state, actions);
-
       const { directory } = actions.payload.directory;
-
-      console.log(directory);
 
       const newFolder: Folder = actions.payload;
 
@@ -37,9 +33,12 @@ export const foldersSlice = createSlice({
       currentState.push(newFolder);
       state.folders = currentState;
 
-      console.log(state.folders[0], state.folders[1]);
-
-      localStorage.setItem("folders", JSON.stringify(state.folders));
+      if (localStorage.getItem("folders")) {
+        const prevFolders = JSON.parse(localStorage.getItem("folders") || "{}");
+        console.log(prevFolders);
+        prevFolders.push(state.folders[0]);
+        localStorage.setItem("folders", JSON.stringify(prevFolders));
+      } else localStorage.setItem("folders", JSON.stringify(state.folders));
 
       console.log(newFolder);
 

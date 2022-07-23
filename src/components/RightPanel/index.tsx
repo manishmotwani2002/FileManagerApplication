@@ -4,7 +4,7 @@ import "./index.css";
 import Content from "./FolderContent/Content";
 import AddContent from "./AddContent/AddContent";
 
-function RightPanel() {
+function RightPanel({ currentFolder }: any) {
   return (
     <div>
       <div className="header">
@@ -16,7 +16,7 @@ function RightPanel() {
         </div>
       </div>
       <div>
-        <Content />
+        <Content currentFolder={currentFolder} />
       </div>
       <div>{/* <AddContent /> */}</div>
     </div>

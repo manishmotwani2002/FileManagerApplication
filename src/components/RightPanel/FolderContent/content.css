@@ -1,6 +1,6 @@
 .add-item {
-  width: 8rem;
-  height: 8rem;
+  width: 12rem;
+  height: 12rem;
   border-style: dashed;
   border-radius: 10%;
   border-width: 10%;
@@ -12,5 +12,5 @@
   position: relative;
   top: 50%;
   transform: translateY(-50%);
-  font-size: large;
+  font-size: xx-large;
 }

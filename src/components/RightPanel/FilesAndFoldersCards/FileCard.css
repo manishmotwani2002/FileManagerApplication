@@ -1,0 +1,15 @@
+.file-card {
+  width: 12rem;
+  height: 12rem;
+  border-style: solid;
+  border-radius: 10%;
+  border-width: thick;
+  background-color: white;
+  overflow: hidden;
+}
+
+img {
+  width: 12rem;
+  height: 12rem;
+  object-fit: cover;
+}

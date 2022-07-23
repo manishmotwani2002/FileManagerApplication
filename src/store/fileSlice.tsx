@@ -15,6 +15,7 @@ export const directorySlice = createSlice({
   initialState,
   reducers: {
     addDirectory: (state, value) => {
+      console.log("test");
       console.log(value);
     },
     removeDirectory: (state) => {},

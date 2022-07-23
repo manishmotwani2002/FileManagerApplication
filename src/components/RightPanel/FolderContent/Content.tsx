@@ -1,16 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { getPhotos } from "../../../utils/folderPhotos";
 import AddContent from "../AddContent/AddContent";
+import FileCard from "../FilesAndFoldersCards/FileCard";
 import "./content.css";
-function Content() {
+function Content({ currentFolder }: any) {
   const [popUp, setPopUp] = useState(false);
+  const [files, setFiles] = useState<any[]>([]);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const handleAdd = () => {
-    console.log(popUp);
     setPopUp(true);
-    console.log(popUp);
-
     // const duringPopUp = popUp ? " during-popup" : "";
   };
+
+  useEffect(() => {
+    getPhotos(currentFolder).then((response) => {
+      setFiles(response.results);
+    });
+  }, [currentFolder]);
 
   return (
     <div>
@@ -23,6 +32,10 @@ function Content() {
         <div className="folder-item">+</div>
       </div>
       {popUp && <AddContent setPopUp={setPopUp} />}
+
+      {files?.map((file, index) => {
+        return <FileCard imageLink={file.urls.small} />;
+      })}
     </div>
   );
 }
