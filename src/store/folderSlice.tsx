@@ -16,7 +16,9 @@ export interface FoldersState {
   folders: Array<Folder>;
 }
 const initialState: FoldersState = {
-  folders: [],
+  folders: localStorage.getItem("folders")
+    ? JSON.parse(localStorage.getItem("folders") || "{}")
+    : [],
 };
 
 export const foldersSlice = createSlice({
@@ -28,21 +30,20 @@ export const foldersSlice = createSlice({
 
       const newFolder: Folder = actions.payload;
 
-      const currentState = state.folders;
-
-      currentState.push(newFolder);
-      state.folders = currentState;
+      console.log("newFolder", newFolder);
 
       if (localStorage.getItem("folders")) {
         const prevFolders = JSON.parse(localStorage.getItem("folders") || "{}");
         console.log(prevFolders);
-        prevFolders.push(state.folders[0]);
+        prevFolders.push(newFolder);
+        console.log("prev folders before setting", prevFolders);
         localStorage.setItem("folders", JSON.stringify(prevFolders));
-      } else localStorage.setItem("folders", JSON.stringify(state.folders));
-
-      console.log(newFolder);
-
-      // addDirectory(actions.payload.name);
+        state.folders = prevFolders;
+      } else {
+        const foldersArray = [newFolder];
+        localStorage.setItem("folders", JSON.stringify(foldersArray));
+        state.folders = foldersArray;
+      }
     },
     deleteFolder: (state) => {},
   },

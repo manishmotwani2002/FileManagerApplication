@@ -10,7 +10,6 @@ function App() {
 
   return (
     <div>
-      File Manager
       <div className="root">
         <div className="system-tree">
           <SystemTree setCurrentFolder={setCurrentFolder} />
