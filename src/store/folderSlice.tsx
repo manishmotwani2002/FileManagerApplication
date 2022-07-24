@@ -1,7 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
-import { act } from "react-dom/test-utils";
-import { addDirectory } from "./directorySlice";
 
 type Folder = {
   name: string;
@@ -10,6 +7,7 @@ type Folder = {
   date: string;
   creator: string;
   size: string;
+  directory: Array<string>;
 };
 
 export interface FoldersState {
@@ -26,9 +24,11 @@ export const foldersSlice = createSlice({
   initialState,
   reducers: {
     addFolder: (state, actions) => {
-      const { directory } = actions.payload.directory;
+      const newFolder: Folder = actions.payload.inputContent;
 
-      const newFolder: Folder = actions.payload;
+      console.log("Add Folder", actions);
+
+      newFolder.directory = actions.payload.currentDirectory;
 
       console.log("newFolder", newFolder);
 

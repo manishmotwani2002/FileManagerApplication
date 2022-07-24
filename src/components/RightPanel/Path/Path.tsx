@@ -1,7 +1,14 @@
 import React from "react";
 import "./path.css";
 
+import type { RootState } from "../../../store/store";
+import { useSelector, useDispatch } from "react-redux";
+
 function Path() {
+  const currentDirectory = useSelector(
+    (state: RootState) => state.directory.directory
+  );
+
   return (
     <div className="path-container">
       <svg
@@ -16,7 +23,11 @@ function Path() {
           clip-rule="evenodd"
         />
       </svg>
-      <div>root/movies/inception</div>
+      <div>
+        {currentDirectory?.map((directory, index) => {
+          return <span>{directory}/</span>;
+        })}
+      </div>
     </div>
   );
 }

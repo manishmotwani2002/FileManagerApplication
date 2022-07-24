@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { FoldersState } from "./folderSlice";
+import { stat } from "fs";
 
 export interface directoryState {
   directory: Array<string>;
@@ -15,7 +16,15 @@ export const directorySlice = createSlice({
   initialState,
   reducers: {
     addDirectory: (state, value) => {
-      console.log(value);
+      console.log("in slice directory", value);
+
+      var currentDirectory = JSON.parse(JSON.stringify(state.directory));
+
+      if (value.payload.request === "root") {
+        currentDirectory = ["root"];
+      }
+      currentDirectory.push(value.payload.folderName);
+      state.directory = currentDirectory;
     },
     removeDirectory: (state) => {},
   },

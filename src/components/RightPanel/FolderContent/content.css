@@ -10,17 +10,14 @@
 
 .add-item {
   position: relative;
-  /* top: 50%; */
-  /* transform: translateY(-50%); */
   font-size: xx-large;
+  transition: all 0.2s ease-in;
 }
 
 .files-container {
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: center; */
-  /* flex-flow: row; */
-  /* background-color: darkblue; */
+  position: relative;
 }
 
 .folder-item {

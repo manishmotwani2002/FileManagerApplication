@@ -1,6 +1,5 @@
 .form-header {
   display: flex;
-  /* justify-content: space-between; */
   align-items: center;
   text-align: center;
   font-size: xx-large;
@@ -29,12 +28,37 @@
   font-size: large;
   border-radius: 10px;
   border: 1px solid #ccc;
-  /* border-bottom-width: 2px; */
   transition: all 0.3s ease;
-  /* background-color: skyblue; */
-  /* color: white; */
+  transition: all 0.2s ease-out;
 }
 
-.toggle_btn {
+.add-item .toggle_btn {
   padding: 2%;
+}
+
+.modalBackground {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  transition: opacity 200ms;
+  z-index: 1;
+}
+
+.modalContainer {
+  width: 70%;
+  height: 70%;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid #666;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  position: relative;
+  margin: auto;
+}
+
+.titleCloseBtn {
+  display: flex;
+  justify-content: flex-end;
 }
