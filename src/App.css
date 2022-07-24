@@ -2,7 +2,7 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: gray;
   display: flex;
-  flex-direction: row;
+  align-items: stretch;
   margin: auto;
   /* margin-top: auto; */
   /* margin: 4%; */
@@ -11,18 +11,21 @@
   border-radius: 0%;
   box-shadow: 5px 6px 31px 0px #b4b4b4;
   overflow: hidden;
-  padding: 4% 0%;
+  /* padding: 4% 0%; */
+  /* margin-top: auto; */
 }
 
 .right-panel {
-  flex-grow: 1;
+  /* flex-grow: 1; */
+  width: 80%;
   overflow-y: scroll;
   margin: 0 4%;
 }
 
 .system-tree {
   width: 20%;
-  height: 100%;
+  min-height: 100%;
+  background-color: #f7fafc;
 }
 
 .children-item {

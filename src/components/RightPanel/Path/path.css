@@ -1,5 +1,7 @@
 .path-container {
   display: flex;
+  gap: 4%;
+  font-size: larger;
   align-items: center;
   flex-direction: row;
 }

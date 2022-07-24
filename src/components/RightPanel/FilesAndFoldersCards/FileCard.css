@@ -9,8 +9,33 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.file-card:hover {
+  box-shadow: 5px 5px 15px 4px #acacac;
+  transition: 0.3s ease-in-out;
+}
+
+.file-card img {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+.file-card:hover img {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
 img {
   width: 12rem;
   height: 12rem;
   object-fit: cover;
+}
+
+.hover11 figure img {
+  opacity: 1;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+.hover11 figure:hover img {
+  opacity: 0.5;
 }

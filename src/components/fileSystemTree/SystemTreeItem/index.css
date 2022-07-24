@@ -1,4 +1,12 @@
-.root {
+.tree-item {
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4% 10%;
+  font-size: larger;
+  color: #424242;
+}
+
+.tree-item:hover {
+  background-color: #edf2f7;
 }

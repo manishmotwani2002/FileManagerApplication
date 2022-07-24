@@ -1,5 +1,7 @@
 .menu-root {
-  background-color: gainsboro;
+  display: flex;
+  flex-direction: column;
+  padding: 6%;
 }
 .children-item {
   border-left: 0.2rem solid gray;

@@ -22,7 +22,7 @@ function SystemTree({ setCurrentFolder }: any) {
 
   return (
     <div className="menu-root">
-      Root
+      <h3>Root</h3>
       <div>
         {folders.map((item: any, index: number) => {
           return (

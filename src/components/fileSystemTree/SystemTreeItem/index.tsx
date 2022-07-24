@@ -4,7 +4,7 @@ import "./index.css";
 function SystemTreeItem({ name = "New Folder" }) {
   return (
     <div>
-      <div className="root" onClick={() => {}}>
+      <div className="tree-item" onClick={() => {}}>
         <div>{name}</div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
