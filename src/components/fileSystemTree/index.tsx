@@ -29,10 +29,7 @@ function SystemTree({ setCurrentFolder }: any) {
       <h3>Root</h3>
       <div>
         {folders.map((item: any, index: number) => {
-          if (
-            JSON.stringify(item.directory) ==
-            JSON.stringify(currentDirectory.directory)
-          ) {
+          if (JSON.stringify(item.directory) === JSON.stringify(["root"])) {
             console.log("inside the map", item.directory, currentDirectory);
             return (
               <div key={item} onClick={() => handleClick(item.name)}>

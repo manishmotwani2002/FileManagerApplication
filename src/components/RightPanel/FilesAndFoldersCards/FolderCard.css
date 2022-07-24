@@ -1,0 +1,21 @@
+.folder-wrapper {
+  text-align: center;
+}
+
+.folder-icon {
+  color: #feeb75;
+  filter: drop-shadow(3px 5px 3px #acacac);
+  width: 8rem;
+  height: auto;
+}
+
+.folder-icon svg:hover {
+  color: #fee575;
+  filter: drop-shadow(5px 5px 10px #acacac);
+  transition: 0.3s ease-in-out;
+}
+
+.folder-name {
+  font-size: large;
+  /* font-weight: bold; */
+}

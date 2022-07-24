@@ -7,13 +7,16 @@
 }
 
 .search-container {
+  /* flex-grow: 1; */
   display: flex;
-  position: relative;
   align-items: center;
 }
 
 .search-icon {
-  position: absolute;
+  width: 30px;
+  /* height: auto; */
+  position: relative;
+  right: 50px;
   /* max-width: 70%; */
   /* max-height: inherit; */
 }
