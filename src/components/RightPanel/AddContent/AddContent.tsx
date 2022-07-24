@@ -54,32 +54,40 @@ function AddContent(props: any) {
             />
           </svg>
         </div>
-        <div className="toggle_btn_wrapper">
-          <button className="toggle_btn">File</button>
-          <button className="toggle_btn">Folder</button>
+        <div className="wrapper">
+          <div className="toggle_btn_wrapper">
+            <button className="toggle_btn">File</button>
+            <button className="toggle_btn">Folder</button>
+          </div>
         </div>
         <form className="create-form">
           <input
+            className="form-input"
             type="text"
             placeholder="Name"
             onChange={handleChange("name")}
           />
           <input
+            className="form-input"
             type="text"
             placeholder="Creator"
             onChange={handleChange("creator")}
           />
           <input
+            className="form-input"
             type="text"
             placeholder="Size"
             onChange={handleChange("size")}
           />
           <input
+            className="form-input"
             type="text"
             placeholder="Date(DD/MM/YYYY)"
             onChange={handleChange("date")}
           />
-          <button onClick={(e) => handleSubmit(e)}>Create</button>
+          <button className="button-main" onClick={(e) => handleSubmit(e)}>
+            Create
+          </button>
         </form>
       </div>
     </div>

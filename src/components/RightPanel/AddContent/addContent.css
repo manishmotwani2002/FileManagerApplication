@@ -3,6 +3,7 @@
   align-items: center;
   text-align: center;
   font-size: xx-large;
+  padding: 1rem 0;
 }
 .create-form {
   display: flex;
@@ -19,21 +20,38 @@
   flex-grow: 1;
 }
 
-.toggle_btn_wrapper {
-  display: inline-block;
-  padding: 2%;
+.wrapper {
+  width: 100%;
+}
 
-  text-align: center;
-  outline: none;
+.toggle_btn_wrapper {
+  display: flex;
+  max-width: 60%;
+  margin: 1.5rem auto 1.5rem auto;
+  /* flex-flow: wrap; */
+
+  /* width: max-content; */
+  justify-content: center;
+  /* padding: 2%; */
+
+  /* text-align: center; */
+  outline: gray;
   font-size: large;
   border-radius: 10px;
   border: 1px solid #ccc;
   transition: all 0.3s ease;
   transition: all 0.2s ease-out;
+  /* margin: 2rem 0%; */
 }
 
-.add-item .toggle_btn {
-  padding: 2%;
+.toggle_btn {
+  padding: 1rem;
+  font-size: large;
+  /* width: 40%; */
+  color: #666;
+  border: none;
+  flex-grow: 1;
+  /* max-width: 30%; */
 }
 
 .modalBackground {
@@ -48,7 +66,7 @@
 }
 
 .modalContainer {
-  width: 70%;
+  max-width: 50%;
   height: 70%;
   border-radius: 12px;
   background: #fff;
@@ -56,6 +74,16 @@
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
   position: relative;
   margin: auto;
+  padding: 4rem;
+  text-align: center;
+}
+
+.form-input {
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 0.6rem;
+
+  border-color: #57a0d3;
 }
 
 .titleCloseBtn {
