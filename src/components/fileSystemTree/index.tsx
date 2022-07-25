@@ -13,14 +13,9 @@ function SystemTree({ setCurrentFolder }: any) {
   const folders = useSelector((state: RootState) => state.folders.folders);
   const currentDirectory = useSelector((state: RootState) => state.directory);
 
-  console.log(currentDirectory);
-
-  console.log("left panel folders", folders);
-
   const handleClick = (folderName: string) => {
     setCurrentFolder(folderName);
     //update the directory of the folder
-    console.log(folderName);
     dispatch(addDirectory({ folderName, request: "root" }));
   };
 
@@ -30,7 +25,6 @@ function SystemTree({ setCurrentFolder }: any) {
       <div>
         {folders.map((item: any, index: number) => {
           if (JSON.stringify(item.directory) === JSON.stringify(["root"])) {
-            console.log("inside the map", item.directory, currentDirectory);
             return (
               <div key={item} onClick={() => handleClick(item.name)}>
                 <SystemTreeItem name={item.name} />

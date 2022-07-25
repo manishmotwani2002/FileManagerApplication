@@ -26,17 +26,11 @@ export const foldersSlice = createSlice({
     addFolder: (state, actions) => {
       const newFolder: Folder = actions.payload.inputContent;
 
-      console.log("Add Folder", actions);
-
       newFolder.directory = actions.payload.currentDirectory;
-
-      console.log("newFolder", newFolder);
 
       if (localStorage.getItem("folders")) {
         const prevFolders = JSON.parse(localStorage.getItem("folders") || "{}");
-        console.log(prevFolders);
         prevFolders.push(newFolder);
-        console.log("prev folders before setting", prevFolders);
         localStorage.setItem("folders", JSON.stringify(prevFolders));
         state.folders = prevFolders;
       } else {

@@ -12,14 +12,20 @@
   position: relative;
   font-size: xx-large;
   transition: all 0.2s ease-in;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .files-container {
   display: flex;
+  height: 80vh;
+  /* z-index: -1; */
   align-items: center;
   justify-content: space-evenly;
   flex-wrap: wrap;
   position: relative;
+  overflow-y: scroll;
 }
 
 .folder-item {

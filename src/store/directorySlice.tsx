@@ -16,8 +16,6 @@ export const directorySlice = createSlice({
   initialState,
   reducers: {
     addDirectory: (state, value) => {
-      console.log("in slice directory", value);
-
       var currentDirectory = JSON.parse(JSON.stringify(state.directory));
 
       if (value.payload.request === "root") {
