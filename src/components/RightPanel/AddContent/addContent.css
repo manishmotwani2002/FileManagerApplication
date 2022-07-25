@@ -47,9 +47,8 @@
   flex-grow: 1;
 }
 
-.modalBackground {
+.modal_background {
   position: fixed;
-
   top: 0;
   bottom: 0;
   left: 0;
@@ -59,7 +58,7 @@
   z-index: 2;
 }
 
-.modalContainer {
+.modal_container {
   max-width: 40%;
   height: 70%;
   border-radius: 12px;

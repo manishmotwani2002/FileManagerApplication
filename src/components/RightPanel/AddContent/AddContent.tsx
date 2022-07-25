@@ -29,11 +29,12 @@ function AddContent(props: any) {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     dispatch(addFolder({ inputContent, currentDirectory }));
+    setOpenModal(false);
   };
 
   return (
-    <div className="modalBackground">
-      <div className="modalContainer">
+    <div className="modal_background">
+      <div className="modal_container">
         <div className="form-header">
           <div className="heading">Create New</div>
           <svg
@@ -56,8 +57,24 @@ function AddContent(props: any) {
         </div>
         <div className="wrapper">
           <div className="toggle_btn_wrapper">
-            <button className="toggle_btn">File</button>
-            <button className="toggle_btn">Folder</button>
+            <input
+              type="radio"
+              id="file"
+              value="File"
+              name="type"
+              className="toggle_btn"
+            />
+            <label>Male</label>
+            <input
+              type="radio"
+              id="folder"
+              value="Folder"
+              name="type"
+              className="toggle_btn"
+            />
+            <label>Female</label>
+            {/* <button className="toggle_btn">File</button>
+            <button className="toggle_btn">Folder</button> */}
           </div>
         </div>
         <form className="create-form">

@@ -4,7 +4,8 @@ import AddContent from "../AddContent/AddContent";
 import FileCard from "../FilesAndFoldersCards/FileCard";
 import FolderCard from "../FilesAndFoldersCards/FolderCard";
 import type { RootState } from "../../../store/store";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteFolder } from "../../../store/folderSlice";
 
 import { debounce } from "../../../utils/debounce";
 
@@ -12,15 +13,20 @@ import "./content.css";
 
 function Content({ currentFolder, searchQuery }: any) {
   const [modalOpen, setModalOpen] = useState(false);
+  const [fileModal, setFileModal] = useState("");
   const [files, setFiles] = useState<any[]>([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState("Loading...");
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState({
+    isOpen: false,
+    key: 0,
+  });
   const [filteredFolders, setFilteredFolders] = useState([]);
 
   const currentDirectory = useSelector(
     (state: RootState) => state.directory.directory
   );
+  const dispatch = useDispatch();
 
   const folders = localStorage.getItem("folders")
     ? JSON.parse(localStorage.getItem("folders") || "{}")
@@ -86,6 +92,11 @@ function Content({ currentFolder, searchQuery }: any) {
     myDebouncedFunction(searchQuery);
   }, [searchQuery]);
 
+  const handleDelete = (folder: any) => {
+    //call the reducer
+    dispatch(deleteFolder(folder));
+  };
+
   return (
     <div>
       {filteredFolders.length > 0 && (
@@ -113,15 +124,56 @@ function Content({ currentFolder, searchQuery }: any) {
           </div>
 
           {nestedFolders.map((folder: any, index: number) => {
+            let currentIndex = index;
             return (
-              <div key={index} onClick={() => {}}>
+              <div
+                key={index}
+                onClick={() => {
+                  setMenuOpen({
+                    ...menuOpen,
+                    key: index,
+                    isOpen: !menuOpen.isOpen,
+                  });
+                }}
+              >
                 <FolderCard folderName={folder.name} />
+                {menuOpen.isOpen && index === menuOpen.key && (
+                  <div className="options-section" key={index}>
+                    <div className="options">Open</div>
+                    <div className="options">Get Info</div>
+                    <div
+                      className="options"
+                      onClick={() => {
+                        handleDelete(folder);
+                      }}
+                    >
+                      Delete
+                    </div>
+                  </div>
+                )}
               </div>
             );
           })}
+
+          {fileModal.length > 0 && (
+            <div className="modal_background">
+              <img
+                src={fileModal}
+                alt="Photo in Dialog"
+                className="image-container"
+              />
+            </div>
+          )}
+
           {files?.map((file, index) => {
             return (
-              <div className="folder-item">
+              <div
+                className="folder-item"
+                key={index}
+                onClick={() => {
+                  setFileModal(file.urls.full);
+                }}
+              >
                 <FileCard imageLink={file.urls.small} />
               </div>
             );

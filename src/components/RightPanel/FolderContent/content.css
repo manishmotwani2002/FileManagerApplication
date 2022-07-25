@@ -30,3 +30,43 @@
 .folder-item {
   margin: 2%;
 }
+
+.modal_background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  transition: opacity 200ms;
+  z-index: 2;
+}
+
+.modal_container {
+  max-width: 40%;
+  height: 70%;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid #666;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  position: relative;
+  margin: auto;
+  padding: 4rem;
+  text-align: center;
+}
+
+.image-container {
+  width: 60%;
+  height: auto;
+  max-height: 70%;
+  border-radius: 12px;
+  border: 1px solid #666;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  position: relative;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  object-fit: cover;
+}

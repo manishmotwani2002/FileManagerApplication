@@ -8,6 +8,7 @@ type Folder = {
   creator: string;
   size: string;
   directory: Array<string>;
+  folderId: number;
 };
 
 export interface FoldersState {
@@ -27,6 +28,7 @@ export const foldersSlice = createSlice({
       const newFolder: Folder = actions.payload.inputContent;
 
       newFolder.directory = actions.payload.currentDirectory;
+      newFolder.folderId = Math.floor(Math.random() * 1000);
 
       if (localStorage.getItem("folders")) {
         const prevFolders = JSON.parse(localStorage.getItem("folders") || "{}");
@@ -39,7 +41,20 @@ export const foldersSlice = createSlice({
         state.folders = foldersArray;
       }
     },
-    deleteFolder: (state) => {},
+    deleteFolder: (state, actions) => {
+      console.log(actions);
+      //actions.payload
+      const currentFolders = JSON.parse(
+        localStorage.getItem("folders") || "{}"
+      );
+
+      const updatedFolders = currentFolders.filter((folder: any) => {
+        return folder.folderId != actions.payload.folderId;
+      });
+      console.log("updatedFolders", updatedFolders);
+      localStorage.setItem("folders", JSON.stringify(updatedFolders));
+      state.folders = updatedFolders;
+    },
   },
 });
 

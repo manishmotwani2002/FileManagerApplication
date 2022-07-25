@@ -17,12 +17,6 @@ export default function FolderCard({ folderName }: any) {
 
         <div className="folder-name">{folderName}</div>
       </div>
-
-      <div className="options-section">
-        <div className="options">Open</div>
-        <div className="options">Get Info</div>
-        <div className="options">Delete</div>
-      </div>
     </div>
   );
 }
