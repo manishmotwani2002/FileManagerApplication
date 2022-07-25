@@ -17,7 +17,6 @@
 
 .folder-name {
   font-size: large;
-  /* font-weight: bold; */
 }
 
 .options-section {
@@ -29,9 +28,6 @@
   display: flex;
   justify-content: start;
   flex-direction: column;
-  /* gap: 1.5rem; */
-  /* background-color: #edf2f7; */
-  /* padding: 1.5rem; */
   border-radius: 0.5rem;
   box-shadow: 5px 5px 15px #c8c7c7;
   color: #424242;

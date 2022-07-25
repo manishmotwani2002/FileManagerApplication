@@ -26,7 +26,6 @@ function RightPanel({ currentFolder }: any) {
               handleChange(e);
             }}
           />
-          {/* <div className="search-icon"> */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5 search-icon"

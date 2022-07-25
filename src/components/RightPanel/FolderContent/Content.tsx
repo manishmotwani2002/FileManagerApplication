@@ -10,13 +10,13 @@ import { debounce } from "../../../utils/debounce";
 
 import "./content.css";
 
-<div>{/* <AddContent /> */}</div>;
 function Content({ currentFolder, searchQuery }: any) {
   const [modalOpen, setModalOpen] = useState(false);
   const [files, setFiles] = useState<any[]>([]);
   const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(true);
-  // const [showMenu, setShowMenu] = useState(false);
+  const [loading, setLoading] = useState("Loading...");
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [filteredFolders, setFilteredFolders] = useState([]);
 
   const currentDirectory = useSelector(
     (state: RootState) => state.directory.directory
@@ -36,8 +36,6 @@ function Content({ currentFolder, searchQuery }: any) {
     setModalOpen(true);
   };
 
-  // useEffect(() => {}, [currentFolder]);
-
   useEffect(() => {
     if (page == 1) {
       if (localStorage.getItem(currentFolder)) {
@@ -49,87 +47,89 @@ function Content({ currentFolder, searchQuery }: any) {
         });
       }
     } else {
-      setLoading(true);
+      setLoading("Loading...");
       getPhotos(currentFolder, page)
         .then((response) => {
-          console.log("response results", response.results);
-          // setFiles((prev) => [...prev, ...response.results]);
+          if (response.results == undefined) {
+            setLoading("You're all caught up!!");
+            return;
+          }
 
           const updatedPhotos = files.concat(response.results);
-          console.log("updated photos", updatedPhotos);
-          console.log(files);
           setFiles(updatedPhotos);
-          console.log(files);
 
-          console.log("page value", page);
-          setLoading(false);
+          setLoading("");
         })
-        .catch((err) => console.log(err));
-
-      console.log("page value", page);
+        .catch((err) => console.log("Catch errror", err));
     }
-
-    // const loadPhotos = async () => {
-    //   setLoading(true);
-    //   getPhotos(currentFolder, page)
-    //     .then((response) => {
-    //       console.log("response results", response.results);
-    //       // setFiles((prev) => [...prev, ...response.results]);
-    //       console.log(files);
-    //       console.log("page value", page);
-    //       setLoading(false);
-    //     })
-    //     .catch((err) => console.log(err));
-
-    //   console.log("page value", page);
-    // };
-
-    // loadPhotos();
   }, [page]);
 
   const handleScroll = (event: any) => {
     const { scrollTop, clientHeight, scrollHeight } = event.currentTarget;
-
-    console.log(scrollTop, clientHeight, scrollHeight);
 
     if (scrollHeight - scrollTop <= clientHeight + 10) {
       setPage((prev) => prev + 1);
     }
   };
 
-  // console.log("files new", files);
+  useEffect(() => {
+    let selectedFolder;
+    const myDebouncedFunction = debounce((query) => {
+      selectedFolder = nestedFolders.filter((folder: any) => {
+        if (query.length > 0)
+          return folder.name.toLowerCase().includes(query.toLowerCase());
+      });
+
+      setFilteredFolders(selectedFolder);
+    }, 3000);
+
+    myDebouncedFunction(searchQuery);
+  }, [searchQuery]);
 
   return (
-    // <div>
-    <div className="files-container" onScroll={(e) => handleScroll(e)}>
-      {modalOpen && <AddContent setOpenModal={setModalOpen} />}
+    <div>
+      {filteredFolders.length > 0 && (
+        <div className="files-container">
+          {filteredFolders?.map((folder: any, index: number) => {
+            return (
+              <div key={index}>
+                <FolderCard folderName={folder.name} />
+              </div>
+            );
+          })}
+        </div>
+      )}
+      {filteredFolders.length === 0 && (
+        <div className="files-container" onScroll={(e) => handleScroll(e)}>
+          {modalOpen && <AddContent setOpenModal={setModalOpen} />}
 
-      <div
-        className="add-item folder-item"
-        onClick={() => {
-          handleAdd();
-        }}
-      >
-        +
-      </div>
+          <div
+            className="add-item folder-item"
+            onClick={() => {
+              handleAdd();
+            }}
+          >
+            +
+          </div>
 
-      {nestedFolders.map((folder: any, index: number) => {
-        return (
-          <div key={index}>
-            <FolderCard folderName={folder.name} />
-          </div>
-        );
-      })}
-      {files?.map((file, index) => {
-        return (
-          <div className="folder-item">
-            <FileCard imageLink={file.urls.small} />
-          </div>
-        );
-      })}
-      {loading && <div>Loading...</div>}
+          {nestedFolders.map((folder: any, index: number) => {
+            return (
+              <div key={index} onClick={() => {}}>
+                <FolderCard folderName={folder.name} />
+              </div>
+            );
+          })}
+          {files?.map((file, index) => {
+            return (
+              <div className="folder-item">
+                <FileCard imageLink={file.urls.small} />
+              </div>
+            );
+          })}
+          {loading.length > 0 && <div>{loading}</div>}
+        </div>
+      )}
     </div>
-    // </div>
   );
 }
 
