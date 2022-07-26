@@ -37,3 +37,10 @@ img {
 .hover11 figure:hover img {
   opacity: 0.5;
 }
+
+@media only screen and (max-width: 600px) {
+  .file-card {
+    width: 8rem;
+    height: 8rem;
+  }
+}

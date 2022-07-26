@@ -41,12 +41,9 @@
 }
 
 .toggle_btn {
-  /* padding: 1rem; */
   font-size: large;
-  /* size: 3rem; */
   color: #666;
   border: none;
-  /* flex-grow: 1; */
 }
 
 .modal_background {
@@ -84,4 +81,17 @@
 .titleCloseBtn {
   display: flex;
   justify-content: flex-end;
+}
+
+@media only screen and (max-width: 600px) {
+  .modal_container {
+    max-width: 100%;
+    width: 100vw;
+    padding: 2rem;
+    overflow-x: hidden;
+    font-size: medium;
+  }
+  .form-input {
+    max-width: inherit;
+  }
 }

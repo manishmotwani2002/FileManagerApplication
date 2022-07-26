@@ -11,8 +11,6 @@ function App() {
     name: "root",
   });
 
-  console.log("currentfolder in main", currentFolder);
-
   return (
     <div>
       <div className="root">

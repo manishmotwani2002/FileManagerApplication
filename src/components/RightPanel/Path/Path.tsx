@@ -16,7 +16,6 @@ function Path() {
     dispatch(removeDirectory(currentDirectory));
   };
   const handleMenuDisplay = (folder: any) => {
-    console.log("menu icon");
     const sideMenu: any = document.querySelector("#menu");
     sideMenu.style.display = "block";
   };

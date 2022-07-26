@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Children, useState } from "react";
 import SystemTreeItem from "./SystemTreeItem";
 import "./index.css";
 
@@ -8,6 +8,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { addDirectory } from "../../store/directorySlice";
 
 function SystemTree({ setCurrentFolder }: any) {
+  const [currentChildFolders, setCurrentChildFolders] = useState<[] | null>(
+    null
+  );
   const dispatch = useDispatch();
 
   const folders = useSelector((state: RootState) => state.folders.folders);
@@ -23,6 +26,17 @@ function SystemTree({ setCurrentFolder }: any) {
   const handleHideMenu = () => {
     const closeMenu: any = document.querySelector(".system-tree");
     closeMenu.style.display = "none";
+  };
+
+  const handleChildren = (clickedFolder: any) => {
+    const currentDirectory = [...clickedFolder.directory, clickedFolder.name];
+
+    const childFolders: any = folders.filter((folder) => {
+      return (
+        JSON.stringify(folder.directory) === JSON.stringify(currentDirectory)
+      );
+    });
+    setCurrentChildFolders(childFolders);
   };
 
   return (
@@ -46,13 +60,33 @@ function SystemTree({ setCurrentFolder }: any) {
           {folders.map((item: any, index: number) => {
             if (JSON.stringify(item.directory) === JSON.stringify(["root"])) {
               return (
-                <div key={item} onClick={() => handleClick(item)}>
+                <div
+                  key={item}
+                  onClick={() => {
+                    handleClick(item);
+                    handleChildren(item);
+                  }}
+                >
                   <SystemTreeItem name={item.name} />
                 </div>
               );
             }
           })}
-          {/* <div className="children-item"></div> */}
+
+          {currentChildFolders?.map((child: any, index: number) => {
+            return (
+              <div
+                className="children-item"
+                key={child}
+                onClick={() => {
+                  handleClick(child);
+                  handleChildren(child);
+                }}
+              >
+                <SystemTreeItem name={child.name} />
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

@@ -23,8 +23,6 @@ function Content({ currentFolder, setCurrentFolder, searchQuery }: any) {
     key: 0,
   });
 
-  console.log("content.tsx", currentFolder);
-
   const [filteredFolders, setFilteredFolders] = useState([]);
 
   const currentDirectory = useSelector(
@@ -193,7 +191,7 @@ function Content({ currentFolder, setCurrentFolder, searchQuery }: any) {
           })}
 
           {currentFolder.type === "File" && fileModal.length > 0 && (
-            <div className="modal_background">
+            <div className="modalBackground">
               <img
                 src={fileModal}
                 alt="Photo in Dialog"

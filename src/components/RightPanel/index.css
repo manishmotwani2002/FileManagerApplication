@@ -39,5 +39,6 @@
   }
   .header-container {
     flex-direction: column;
+    gap: 1rem;
   }
 }
