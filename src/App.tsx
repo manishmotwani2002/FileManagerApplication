@@ -16,7 +16,7 @@ function App() {
   return (
     <div>
       <div className="root">
-        <div className="system-tree">
+        <div id="menu" className="system-tree">
           <SystemTree setCurrentFolder={setCurrentFolder} />
         </div>
         <div className="right-panel">

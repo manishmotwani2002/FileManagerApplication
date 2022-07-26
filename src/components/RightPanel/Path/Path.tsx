@@ -15,9 +15,20 @@ function Path() {
   const deleteDirectories = () => {
     dispatch(removeDirectory(currentDirectory));
   };
+  const handleMenuDisplay = (folder: any) => {
+    console.log("menu icon");
+    const sideMenu: any = document.querySelector("#menu");
+    sideMenu.style.display = "block";
+  };
 
   return (
     <div className="path-container">
+      <div id="hamburger-icon" onClick={handleMenuDisplay}>
+        <div className="bar1"></div>
+        <div className="bar2"></div>
+        <div className="bar3"></div>
+      </div>
+
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className="icon "
@@ -33,7 +44,7 @@ function Path() {
           clip-rule="evenodd"
         />
       </svg>
-      <div>
+      <div className="complete-path">
         {currentDirectory?.map((directory, index) => {
           return <span>{directory}/</span>;
         })}

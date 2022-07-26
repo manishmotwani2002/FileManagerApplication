@@ -11,6 +11,12 @@ function RightPanel({ currentFolder, setCurrentFolder }: any) {
     setSearchQuery(e.target.value);
   };
 
+  const handleMenuDisplay = (folder: any) => {
+    console.log("menu icon");
+    const sideMenu: any = document.querySelector("#menu");
+    sideMenu.style.display = "block";
+  };
+
   return (
     <div>
       <div className="header-container">

@@ -2,9 +2,31 @@
   display: flex;
   flex-direction: column;
   padding: 6%;
+  z-index: 1;
+}
+
+.cross-icon {
+  position: absolute;
+  right: 0;
+  margin: 1rem;
+  margin-left: auto;
+  display: none;
+
+  height: 2rem;
+}
+@media only screen and (max-width: 600px) {
+  .cross-icon {
+    display: inline-block;
+  }
 }
 .children-item {
   border-left: 0.2rem solid gray;
   display: inline-block;
   margin-left: 10%;
+}
+
+#hamburger-icon {
+  margin: auto 0;
+  display: none;
+  cursor: pointer;
 }
