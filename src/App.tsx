@@ -6,7 +6,12 @@ import SystemTree from "./components/fileSystemTree";
 import RightPanel from "./components/RightPanel";
 
 function App() {
-  const [currentFolder, setCurrentFolder] = useState("Files");
+  const [currentFolder, setCurrentFolder] = useState({
+    type: "Folder",
+    name: "root",
+  });
+
+  console.log("currentfolder in main", currentFolder);
 
   return (
     <div>
@@ -15,7 +20,10 @@ function App() {
           <SystemTree setCurrentFolder={setCurrentFolder} />
         </div>
         <div className="right-panel">
-          <RightPanel currentFolder={currentFolder} />
+          <RightPanel
+            currentFolder={currentFolder}
+            setCurrentFolder={setCurrentFolder}
+          />
         </div>
       </div>
     </div>

@@ -13,10 +13,11 @@ function SystemTree({ setCurrentFolder }: any) {
   const folders = useSelector((state: RootState) => state.folders.folders);
   const currentDirectory = useSelector((state: RootState) => state.directory);
 
-  const handleClick = (folderName: string) => {
-    setCurrentFolder(folderName);
+  const handleClick = (folder: any) => {
+    setCurrentFolder(folder);
+    const { name } = folder;
     //update the directory of the folder
-    dispatch(addDirectory({ folderName, request: "root" }));
+    dispatch(addDirectory({ folderName: name, request: "root" }));
   };
 
   return (
@@ -26,7 +27,7 @@ function SystemTree({ setCurrentFolder }: any) {
         {folders.map((item: any, index: number) => {
           if (JSON.stringify(item.directory) === JSON.stringify(["root"])) {
             return (
-              <div key={item} onClick={() => handleClick(item.name)}>
+              <div key={item} onClick={() => handleClick(item)}>
                 <SystemTreeItem name={item.name} />
               </div>
             );

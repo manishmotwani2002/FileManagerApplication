@@ -1,7 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
-import { FoldersState } from "./folderSlice";
-import { stat } from "fs";
 
 export interface directoryState {
   directory: Array<string>;

@@ -4,7 +4,7 @@ import "./index.css";
 import Content from "./FolderContent/Content";
 import AddContent from "./AddContent/AddContent";
 
-function RightPanel({ currentFolder }: any) {
+function RightPanel({ currentFolder, setCurrentFolder }: any) {
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleChange = (e: any) => {
@@ -41,7 +41,11 @@ function RightPanel({ currentFolder }: any) {
         </div>
       </div>
       <div>
-        <Content currentFolder={currentFolder} searchQuery={searchQuery} />
+        <Content
+          currentFolder={currentFolder}
+          setCurrentFolder={setCurrentFolder}
+          searchQuery={searchQuery}
+        />
       </div>
     </div>
   );

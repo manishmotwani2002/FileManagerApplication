@@ -12,7 +12,7 @@ import { debounce } from "../../../utils/debounce";
 
 import "./content.css";
 
-function Content({ currentFolder, searchQuery }: any) {
+function Content({ currentFolder, setCurrentFolder, searchQuery }: any) {
   const [modalOpen, setModalOpen] = useState(false);
   const [fileModal, setFileModal] = useState("");
   const [files, setFiles] = useState<any[]>([]);
@@ -22,6 +22,9 @@ function Content({ currentFolder, searchQuery }: any) {
     isOpen: false,
     key: 0,
   });
+
+  console.log("content.tsx", currentFolder);
+
   const [filteredFolders, setFilteredFolders] = useState([]);
 
   const currentDirectory = useSelector(
@@ -44,32 +47,39 @@ function Content({ currentFolder, searchQuery }: any) {
   };
 
   useEffect(() => {
-    if (page == 1) {
-      if (localStorage.getItem(currentFolder)) {
-        setFiles(JSON.parse(localStorage.getItem(currentFolder) || "{}"));
+    if (currentFolder.type === "File") {
+      if (page == 1) {
+        if (localStorage.getItem(currentFolder.name)) {
+          setFiles(
+            JSON.parse(localStorage.getItem(currentFolder.name) || "{}")
+          );
+        } else {
+          getPhotos(currentFolder.name).then((response) => {
+            setFiles(response.results);
+            localStorage.setItem(
+              currentFolder.name,
+              JSON.stringify(response.results)
+            );
+          });
+        }
       } else {
-        getPhotos(currentFolder).then((response) => {
-          setFiles(response.results);
-          localStorage.setItem(currentFolder, JSON.stringify(response.results));
-        });
+        setLoading("Loading...");
+        getPhotos(currentFolder.name, page)
+          .then((response) => {
+            if (response.results == undefined) {
+              setLoading("You're all caught up!!");
+              return;
+            }
+
+            const updatedPhotos = files.concat(response.results);
+            setFiles(updatedPhotos);
+
+            setLoading("");
+          })
+          .catch((err) => console.log("Catch errror", err));
       }
-    } else {
-      setLoading("Loading...");
-      getPhotos(currentFolder, page)
-        .then((response) => {
-          if (response.results == undefined) {
-            setLoading("You're all caught up!!");
-            return;
-          }
-
-          const updatedPhotos = files.concat(response.results);
-          setFiles(updatedPhotos);
-
-          setLoading("");
-        })
-        .catch((err) => console.log("Catch errror", err));
     }
-  }, [page]);
+  }, [page, currentFolder]);
 
   const handleScroll = (event: any) => {
     const { scrollTop, clientHeight, scrollHeight } = event.currentTarget;
@@ -160,7 +170,10 @@ function Content({ currentFolder, searchQuery }: any) {
                   <div className="options-section" key={index}>
                     <div
                       className="options"
-                      onClick={() => handleDirectory(folder)}
+                      onClick={() => {
+                        handleDirectory(folder);
+                        setCurrentFolder(folder);
+                      }}
                     >
                       Open
                     </div>
@@ -179,7 +192,7 @@ function Content({ currentFolder, searchQuery }: any) {
             );
           })}
 
-          {fileModal.length > 0 && (
+          {currentFolder.type === "File" && fileModal.length > 0 && (
             <div className="modal_background">
               <img
                 src={fileModal}
@@ -190,20 +203,23 @@ function Content({ currentFolder, searchQuery }: any) {
             </div>
           )}
 
-          {files?.map((file, index) => {
-            return (
-              <div
-                className="folder-item"
-                key={index}
-                onClick={() => {
-                  setFileModal(file.urls.full);
-                }}
-              >
-                <FileCard imageLink={file.urls.small} />
-              </div>
-            );
-          })}
-          {loading.length > 0 && <div>{loading}</div>}
+          {currentFolder.type === "File" &&
+            files?.map((file, index) => {
+              return (
+                <div
+                  className="folder-item"
+                  key={index}
+                  onClick={() => {
+                    setFileModal(file.urls.full);
+                  }}
+                >
+                  <FileCard imageLink={file.urls.small} />
+                </div>
+              );
+            })}
+          {currentFolder.type === "File" && loading.length > 0 && (
+            <div>{loading}</div>
+          )}
         </div>
       )}
     </div>
