@@ -26,25 +26,27 @@
 
 .toggle_btn_wrapper {
   display: flex;
-  max-width: 60%;
+  gap: 1.5rem;
+  width: fit-content;
   margin: 1.5rem auto 1.5rem auto;
-
+  padding: 1rem 2rem;
   justify-content: center;
-
+  background-color: #f7fafc;
   outline: gray;
   font-size: large;
   border-radius: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #57a0d3;
   transition: all 0.3s ease;
   transition: all 0.2s ease-out;
 }
 
 .toggle_btn {
-  padding: 1rem;
+  /* padding: 1rem; */
   font-size: large;
+  /* size: 3rem; */
   color: #666;
   border: none;
-  flex-grow: 1;
+  /* flex-grow: 1; */
 }
 
 .modal_background {
@@ -76,6 +78,7 @@
   margin: 1rem 0;
   border-radius: 0.6rem;
   border-color: #57a0d3;
+  font-size: medium;
 }
 
 .titleCloseBtn {

@@ -42,7 +42,6 @@ export const foldersSlice = createSlice({
       }
     },
     deleteFolder: (state, actions) => {
-      console.log(actions);
       //actions.payload
       const currentFolders = JSON.parse(
         localStorage.getItem("folders") || "{}"
@@ -51,7 +50,6 @@ export const foldersSlice = createSlice({
       const updatedFolders = currentFolders.filter((folder: any) => {
         return folder.folderId != actions.payload.folderId;
       });
-      console.log("updatedFolders", updatedFolders);
       localStorage.setItem("folders", JSON.stringify(updatedFolders));
       state.folders = updatedFolders;
     },

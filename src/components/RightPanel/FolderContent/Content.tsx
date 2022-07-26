@@ -97,6 +97,19 @@ function Content({ currentFolder, searchQuery }: any) {
     dispatch(deleteFolder(folder));
   };
 
+  const handleClose = () => {
+    const concernedElement: any = document.querySelector(".image-container");
+    document.addEventListener("mousedown", (e: any) => {
+      if (concernedElement.contains(e.target)) {
+        //clicked inside
+      } else {
+        setFileModal("");
+        //clicked outside
+      }
+    });
+    return <div></div>;
+  };
+
   return (
     <div>
       {filteredFolders.length > 0 && (
@@ -162,6 +175,7 @@ function Content({ currentFolder, searchQuery }: any) {
                 alt="Photo in Dialog"
                 className="image-container"
               />
+              <div>{handleClose()}</div>
             </div>
           )}
 

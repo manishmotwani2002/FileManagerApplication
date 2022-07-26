@@ -63,18 +63,18 @@ function AddContent(props: any) {
               value="File"
               name="type"
               className="toggle_btn"
+              onChange={handleChange("type")}
             />
-            <label>Male</label>
+            <label>File</label>
             <input
               type="radio"
               id="folder"
               value="Folder"
               name="type"
               className="toggle_btn"
+              onChange={handleChange("type")}
             />
-            <label>Female</label>
-            {/* <button className="toggle_btn">File</button>
-            <button className="toggle_btn">Folder</button> */}
+            <label>Folder</label>
           </div>
         </div>
         <form className="create-form">
