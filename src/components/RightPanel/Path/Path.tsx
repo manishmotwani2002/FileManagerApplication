@@ -3,11 +3,18 @@ import "./path.css";
 
 import type { RootState } from "../../../store/store";
 import { useSelector, useDispatch } from "react-redux";
+import { removeDirectory } from "../../../store/directorySlice";
 
 function Path() {
   const currentDirectory = useSelector(
     (state: RootState) => state.directory.directory
   );
+
+  const dispatch = useDispatch();
+
+  const deleteDirectories = () => {
+    dispatch(removeDirectory(currentDirectory));
+  };
 
   return (
     <div className="path-container">
@@ -16,6 +23,9 @@ function Path() {
         className="icon "
         viewBox="0 0 20 20"
         fill="currentColor"
+        onClick={() => {
+          deleteDirectories();
+        }}
       >
         <path
           fill-rule="evenodd"

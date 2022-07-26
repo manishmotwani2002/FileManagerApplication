@@ -24,7 +24,13 @@ export const directorySlice = createSlice({
       currentDirectory.push(value.payload.folderName);
       state.directory = currentDirectory;
     },
-    removeDirectory: (state) => {},
+    removeDirectory: (state, actions) => {
+      const currentDirectory = [...actions.payload];
+
+      if (currentDirectory.length > 1) currentDirectory.pop();
+
+      state.directory = currentDirectory;
+    },
   },
 });
 

@@ -6,6 +6,7 @@ import FolderCard from "../FilesAndFoldersCards/FolderCard";
 import type { RootState } from "../../../store/store";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteFolder } from "../../../store/folderSlice";
+import { addDirectory } from "../../../store/directorySlice";
 
 import { debounce } from "../../../utils/debounce";
 
@@ -97,6 +98,11 @@ function Content({ currentFolder, searchQuery }: any) {
     dispatch(deleteFolder(folder));
   };
 
+  const handleDirectory = (folder: any) => {
+    //value.payload.request
+    dispatch(addDirectory({ folderName: folder.name }));
+  };
+
   const handleClose = () => {
     const concernedElement: any = document.querySelector(".image-container");
     document.addEventListener("mousedown", (e: any) => {
@@ -152,7 +158,12 @@ function Content({ currentFolder, searchQuery }: any) {
                 <FolderCard folderName={folder.name} />
                 {menuOpen.isOpen && index === menuOpen.key && (
                   <div className="options-section" key={index}>
-                    <div className="options">Open</div>
+                    <div
+                      className="options"
+                      onClick={() => handleDirectory(folder)}
+                    >
+                      Open
+                    </div>
                     <div className="options">Get Info</div>
                     <div
                       className="options"
