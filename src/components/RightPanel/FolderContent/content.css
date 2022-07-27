@@ -20,6 +20,7 @@
   flex-wrap: wrap;
   position: relative;
   overflow-y: scroll;
+  margin: 0;
 }
 
 .folder-item {
@@ -59,6 +60,6 @@
     width: 8rem;
   }
   .image-container {
-    width: 100%;
+    width: 80%;
   }
 }

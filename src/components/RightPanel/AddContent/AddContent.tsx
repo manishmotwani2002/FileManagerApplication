@@ -71,6 +71,7 @@ function AddContent(props: any) {
               id="folder"
               value="Folder"
               name="type"
+              autoFocus
               className="toggle_btn"
               onChange={handleChange("type")}
             />
@@ -82,6 +83,7 @@ function AddContent(props: any) {
             className="form-input"
             type="text"
             placeholder="Name"
+            autoFocus
             onChange={handleChange("name")}
           />
           <input

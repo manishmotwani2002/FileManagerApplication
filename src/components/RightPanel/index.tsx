@@ -19,9 +19,7 @@ function RightPanel({ currentFolder, setCurrentFolder }: any) {
   return (
     <div>
       <div className="header-container">
-        <div>
-          <Path />
-        </div>
+        <Path />
         <div className="search-container">
           <input
             className="input"
@@ -45,13 +43,13 @@ function RightPanel({ currentFolder, setCurrentFolder }: any) {
           </svg>
         </div>
       </div>
-      <div>
-        <Content
-          currentFolder={currentFolder}
-          setCurrentFolder={setCurrentFolder}
-          searchQuery={searchQuery}
-        />
-      </div>
+      {/* <div> */}
+      <Content
+        currentFolder={currentFolder}
+        setCurrentFolder={setCurrentFolder}
+        searchQuery={searchQuery}
+      />
+      {/* </div> */}
     </div>
   );
 }
