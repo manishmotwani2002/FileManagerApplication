@@ -11,6 +11,7 @@ import { addDirectory } from "../../../store/directorySlice";
 import { debounce } from "../../../utils/debounce";
 
 import "./content.css";
+import FolderInfo from "../FilesAndFoldersCards/FolderInfo";
 
 function Content({ currentFolder, setCurrentFolder, searchQuery }: any) {
   const [modalOpen, setModalOpen] = useState(false);
@@ -24,6 +25,8 @@ function Content({ currentFolder, setCurrentFolder, searchQuery }: any) {
   });
 
   const [filteredFolders, setFilteredFolders] = useState([]);
+  const [folderInfo, setFolderInfo] = useState({});
+  const [showInfo, setShowInfo] = useState(false);
 
   const currentDirectory = useSelector(
     (state: RootState) => state.directory.directory
@@ -124,6 +127,11 @@ function Content({ currentFolder, setCurrentFolder, searchQuery }: any) {
     return <div></div>;
   };
 
+  const handleInfo = (selectedFolder: any) => {
+    setFolderInfo(selectedFolder);
+    setShowInfo(true);
+  };
+
   return (
     <div>
       {filteredFolders.length > 0 && (
@@ -175,7 +183,14 @@ function Content({ currentFolder, setCurrentFolder, searchQuery }: any) {
                     >
                       Open
                     </div>
-                    <div className="options">Get Info</div>
+                    <div
+                      className="options"
+                      onClick={() => {
+                        handleInfo(folder);
+                      }}
+                    >
+                      Get Info
+                    </div>
                     <div
                       className="options"
                       onClick={() => {
@@ -189,6 +204,10 @@ function Content({ currentFolder, setCurrentFolder, searchQuery }: any) {
               </div>
             );
           })}
+
+          {showInfo && (
+            <FolderInfo selectedFolder={folderInfo} setShowInfo={setShowInfo} />
+          )}
 
           {currentFolder.type === "File" && fileModal.length > 0 && (
             <div className="modalBackground">

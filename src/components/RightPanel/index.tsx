@@ -43,13 +43,11 @@ function RightPanel({ currentFolder, setCurrentFolder }: any) {
           </svg>
         </div>
       </div>
-      {/* <div> */}
       <Content
         currentFolder={currentFolder}
         setCurrentFolder={setCurrentFolder}
         searchQuery={searchQuery}
       />
-      {/* </div> */}
     </div>
   );
 }
