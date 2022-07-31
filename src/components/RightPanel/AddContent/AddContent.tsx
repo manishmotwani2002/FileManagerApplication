@@ -4,7 +4,7 @@ import type { RootState } from "../../../store/store";
 import { useSelector, useDispatch } from "react-redux";
 import { addFolder } from "../../../store/folderSlice";
 
-function AddContent(props: any) {
+const AddContent = (props: any) => {
   const { setOpenModal } = props;
 
   const count = useSelector((state: RootState) => state.folders);
@@ -78,12 +78,13 @@ function AddContent(props: any) {
             <label>Folder</label>
           </div>
         </div>
-        <form className="create-form">
+        <form className="create-form" onSubmit={(e: any) => handleSubmit(e)}>
           <input
             className="form-input"
             type="text"
             placeholder="Name"
             autoFocus
+            required
             onChange={handleChange("name")}
           />
           <input
@@ -100,17 +101,15 @@ function AddContent(props: any) {
           />
           <input
             className="form-input"
-            type="text"
+            type="date"
             placeholder="Date(DD/MM/YYYY)"
             onChange={handleChange("date")}
           />
-          <button className="button-main" onClick={(e) => handleSubmit(e)}>
-            Create
-          </button>
+          <input type="submit" className="button-main" />
         </form>
       </div>
     </div>
   );
-}
+};
 
 export default AddContent;

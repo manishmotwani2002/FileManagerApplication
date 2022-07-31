@@ -5,7 +5,7 @@ import SystemTreeItem from "./components/fileSystemTree/SystemTreeItem";
 import SystemTree from "./components/fileSystemTree";
 import RightPanel from "./components/RightPanel";
 
-function App() {
+const App = () => {
   const [currentFolder, setCurrentFolder] = useState({
     type: "Folder",
     name: "root",
@@ -26,6 +26,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;

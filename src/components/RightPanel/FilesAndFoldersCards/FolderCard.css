@@ -1,6 +1,7 @@
 .folder-wrapper {
   text-align: center;
   margin: 1rem;
+  cursor: pointer;
 }
 
 .folder-icon {

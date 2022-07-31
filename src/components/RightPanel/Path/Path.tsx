@@ -5,7 +5,7 @@ import type { RootState } from "../../../store/store";
 import { useSelector, useDispatch } from "react-redux";
 import { removeDirectory } from "../../../store/directorySlice";
 
-function Path() {
+const Path = () => {
   const currentDirectory = useSelector(
     (state: RootState) => state.directory.directory
   );
@@ -50,6 +50,6 @@ function Path() {
       </div>
     </div>
   );
-}
+};
 
 export default Path;

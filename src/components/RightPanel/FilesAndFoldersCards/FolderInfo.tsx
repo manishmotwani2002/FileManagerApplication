@@ -1,7 +1,7 @@
 import React from "react";
 import "./FolderInfo.css";
 
-function FolderInfo(props: any) {
+const FolderInfo = (props: any) => {
   const { selectedFolder, setShowInfo } = props;
 
   return (
@@ -47,6 +47,6 @@ function FolderInfo(props: any) {
       </div>
     </div>
   );
-}
+};
 
 export default FolderInfo;

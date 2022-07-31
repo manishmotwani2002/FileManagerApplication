@@ -13,7 +13,7 @@ import { debounce } from "../../../utils/debounce";
 import "./content.css";
 import FolderInfo from "../FilesAndFoldersCards/FolderInfo";
 
-function Content({ currentFolder, setCurrentFolder, searchQuery }: any) {
+const Content = ({ currentFolder, setCurrentFolder, searchQuery }: any) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [fileModal, setFileModal] = useState("");
   const [files, setFiles] = useState<any[]>([]);
@@ -139,7 +139,7 @@ function Content({ currentFolder, setCurrentFolder, searchQuery }: any) {
           {filteredFolders?.map((folder: any, index: number) => {
             return (
               <div key={index}>
-                <FolderCard folderName={folder.name} />
+                <FolderCard folderName={folder.name} folderType={folder.type} />
               </div>
             );
           })}
@@ -171,7 +171,7 @@ function Content({ currentFolder, setCurrentFolder, searchQuery }: any) {
                   });
                 }}
               >
-                <FolderCard folderName={folder.name} />
+                <FolderCard folderName={folder.name} folderType={folder.type} />
                 {menuOpen.isOpen && index === menuOpen.key && (
                   <div className="options-section" key={index}>
                     <div
@@ -241,6 +241,6 @@ function Content({ currentFolder, setCurrentFolder, searchQuery }: any) {
       )}
     </div>
   );
-}
+};
 
 export default Content;

@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { addDirectory } from "../../store/directorySlice";
 
-function SystemTree({ setCurrentFolder }: any) {
+const SystemTree = ({ setCurrentFolder }: any) => {
   const [currentChildFolders, setCurrentChildFolders] = useState<[] | null>(
     null
   );
@@ -91,6 +91,6 @@ function SystemTree({ setCurrentFolder }: any) {
       </div>
     </div>
   );
-}
+};
 
 export default SystemTree;
