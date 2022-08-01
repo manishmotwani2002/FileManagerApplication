@@ -1,15 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-type Folder = {
-  name: string;
-  content: Array<any>;
-  type: string;
-  date: string;
-  creator: string;
-  size: string;
-  directory: Array<string>;
-  folderId: number;
-};
+import { Folder } from "../types/folderTypes";
 
 export interface FoldersState {
   folders: Array<Folder>;
@@ -48,7 +39,7 @@ export const foldersSlice = createSlice({
       );
 
       const updatedFolders = currentFolders.filter((folder: any) => {
-        return folder.folderId != actions.payload.folderId;
+        return folder.folderId !== actions.payload.folderId;
       });
       localStorage.setItem("folders", JSON.stringify(updatedFolders));
       state.folders = updatedFolders;

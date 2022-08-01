@@ -1,8 +1,6 @@
 import { useState } from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import SystemTreeItem from "./components/fileSystemTree/SystemTreeItem";
-import SystemTree from "./components/fileSystemTree";
+import SystemTree from "./components/FileSystemTree/index";
 import RightPanel from "./components/RightPanel";
 
 const App = () => {
