@@ -18,9 +18,8 @@ const SystemTree = ({ setCurrentFolder }: any) => {
 
   const handleClick = (folder: any) => {
     setCurrentFolder(folder);
-    const { name } = folder;
     //update the directory of the folder
-    dispatch(addDirectory({ folderName: name, request: "root" }));
+    dispatch(addDirectory({ folder: folder, request: "root" }));
   };
 
   const handleHideMenu = () => {

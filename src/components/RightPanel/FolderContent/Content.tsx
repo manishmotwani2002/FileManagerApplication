@@ -111,7 +111,7 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: any) => {
 
   const handleDirectory = (folder: any) => {
     //value.payload.request
-    dispatch(addDirectory({ folderName: folder.name }));
+    dispatch(addDirectory({ folder: folder }));
   };
 
   const handleClose = () => {
@@ -192,7 +192,7 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: any) => {
                       Get Info
                     </div>
                     <div
-                      className="options"
+                      className="options delete"
                       onClick={() => {
                         handleDelete(folder);
                       }}
@@ -235,7 +235,7 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: any) => {
               );
             })}
           {currentFolder.type === "File" && loading.length > 0 && (
-            <div>{loading}</div>
+            <div className="loader"></div>
           )}
         </div>
       )}

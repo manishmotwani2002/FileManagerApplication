@@ -1,8 +1,6 @@
 import "./FolderCard.css";
 
 const FolderCard = ({ folderName, folderType }: any) => {
-  console.log(folderName, folderType);
-
   let icon;
   if (folderType === "File") {
     icon = (

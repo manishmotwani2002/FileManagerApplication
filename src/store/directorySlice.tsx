@@ -18,7 +18,9 @@ export const directorySlice = createSlice({
       if (value.payload.request === "root") {
         currentDirectory = ["root"];
       }
-      currentDirectory.push(value.payload.folderName);
+      currentDirectory = value.payload.folder.directory;
+      currentDirectory = [...currentDirectory, value.payload.folder.name];
+
       state.directory = currentDirectory;
     },
     removeDirectory: (state, actions) => {
