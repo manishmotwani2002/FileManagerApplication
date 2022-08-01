@@ -1,17 +1,19 @@
-import { useState, useEffect, useRef, useCallback } from "react";
-import { getPhotos } from "../../../utils/folderPhotos";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
 import AddContent from "../AddContent/AddContent";
 import FileCard from "../FilesAndFoldersCards/FileCard";
 import FolderCard from "../FilesAndFoldersCards/FolderCard";
+import FolderInfo from "../FilesAndFoldersCards/FolderInfo";
+
 import type { RootState } from "../../../store/store";
-import { useSelector, useDispatch } from "react-redux";
 import { deleteFolder } from "../../../store/folderSlice";
 import { addDirectory } from "../../../store/directorySlice";
 
+import { getPhotos } from "../../../utils/folderPhotos";
 import { debounce } from "../../../utils/debounce";
 
 import "./content.css";
-import FolderInfo from "../FilesAndFoldersCards/FolderInfo";
 
 const Content = ({ currentFolder, setCurrentFolder, searchQuery }: any) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -51,6 +53,7 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: any) => {
     if (currentFolder.type === "File") {
       if (page == 1) {
         if (localStorage.getItem(currentFolder.name)) {
+          console.log(currentFolder.name);
           setFiles(
             JSON.parse(localStorage.getItem(currentFolder.name) || "{}")
           );

@@ -1,8 +1,9 @@
 import { useState } from "react";
+
 import Path from "./Path/Path";
-import "./index.css";
 import Content from "./FolderContent/Content";
-import AddContent from "./AddContent/AddContent";
+
+import "./index.css";
 
 const RightPanel = ({ currentFolder, setCurrentFolder }: any) => {
   const [searchQuery, setSearchQuery] = useState("");

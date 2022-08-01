@@ -1,4 +1,3 @@
-import React from "react";
 import "./FolderInfo.css";
 
 const FolderInfo = (props: any) => {

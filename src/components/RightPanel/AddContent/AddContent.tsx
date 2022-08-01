@@ -1,8 +1,10 @@
 import { useState } from "react";
-import "./addContent.css";
-import type { RootState } from "../../../store/store";
 import { useSelector, useDispatch } from "react-redux";
+
+import type { RootState } from "../../../store/store";
 import { addFolder } from "../../../store/folderSlice";
+
+import "./addContent.css";
 
 const AddContent = (props: any) => {
   const { setOpenModal } = props;
