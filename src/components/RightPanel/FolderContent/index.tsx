@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import AddContent from "../AddContent/AddContent";
+import AddContent from "../AddContent";
 import FileCard from "../FilesAndFoldersCards/FileCard";
 import FolderCard from "../FilesAndFoldersCards/FolderCard";
 import FolderInfo from "../FilesAndFoldersCards/FolderInfo";
@@ -13,9 +13,11 @@ import { addDirectory } from "../../../store/directorySlice";
 import { getPhotos } from "../../../utils/folderPhotos";
 import { debounce } from "../../../utils/debounce";
 
-import "./content.css";
+import "./index.css";
 
 const Content = ({ currentFolder, setCurrentFolder, searchQuery }: any) => {
+  const File = "File";
+
   const [modalOpen, setModalOpen] = useState(false);
   const [fileModal, setFileModal] = useState("");
   const [files, setFiles] = useState<any[]>([]);
@@ -50,7 +52,7 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: any) => {
   };
 
   useEffect(() => {
-    if (currentFolder.type === "File") {
+    if (currentFolder.type === File) {
       if (page == 1) {
         if (localStorage.getItem(currentFolder.name)) {
           console.log(currentFolder.name);
@@ -113,6 +115,7 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: any) => {
   };
 
   const handleDirectory = (folder: any) => {
+    console.log(folder);
     //value.payload.request
     dispatch(addDirectory({ folder: folder }));
   };
@@ -141,8 +144,46 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: any) => {
         <div className="files-container">
           {filteredFolders?.map((folder: any, index: number) => {
             return (
-              <div key={index}>
+              <div
+                key={index}
+                onClick={() => {
+                  setMenuOpen({
+                    ...menuOpen,
+                    key: index,
+                    isOpen: !menuOpen.isOpen,
+                  });
+                }}
+              >
                 <FolderCard folderName={folder.name} folderType={folder.type} />
+                {menuOpen.isOpen && index === menuOpen.key && (
+                  <div className="options-section" key={index}>
+                    <div
+                      className="options"
+                      onClick={() => {
+                        handleDirectory(folder);
+                        setCurrentFolder(folder);
+                      }}
+                    >
+                      Open
+                    </div>
+                    <div
+                      className="options"
+                      onClick={() => {
+                        handleInfo(folder);
+                      }}
+                    >
+                      Get Info
+                    </div>
+                    <div
+                      className="options delete"
+                      onClick={() => {
+                        handleDelete(folder);
+                      }}
+                    >
+                      Delete
+                    </div>
+                  </div>
+                )}
               </div>
             );
           })}

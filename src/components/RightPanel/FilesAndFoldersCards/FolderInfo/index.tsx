@@ -1,4 +1,4 @@
-import "./FolderInfo.css";
+import "./index.css";
 
 const FolderInfo = (props: any) => {
   const { selectedFolder, setShowInfo } = props;

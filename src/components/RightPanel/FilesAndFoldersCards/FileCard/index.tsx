@@ -1,4 +1,4 @@
-import "./FileCard.css";
+import "./index.css";
 
 const FileCard = ({ imageLink }: any) => {
   return (

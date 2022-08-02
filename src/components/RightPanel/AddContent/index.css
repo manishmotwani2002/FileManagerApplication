@@ -94,8 +94,8 @@
 
 @media only screen and (max-width: 600px) {
   .modal_container {
-    max-width: 80%;
-    height: 100%;
+    max-width: 100%;
+    height: 70%;
     padding: 2rem;
     overflow-x: hidden;
     font-size: medium;

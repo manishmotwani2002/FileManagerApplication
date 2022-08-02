@@ -1,4 +1,4 @@
-import "./FolderCard.css";
+import "./index.css";
 
 const FolderCard = ({ folderName, folderType }: any) => {
   let icon;

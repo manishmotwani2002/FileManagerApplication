@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import Path from "./Path/Path";
-import Content from "./FolderContent/Content";
+import Content from "./FolderContent";
 
 import "./index.css";
 
