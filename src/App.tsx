@@ -9,7 +9,7 @@ const App = () => {
     type: "Folder",
     name: "root",
   });
-
+  document.addEventListener("contextmenu", (event) => event.preventDefault());
   return (
     <div>
       <div className="root">

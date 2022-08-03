@@ -55,7 +55,6 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: any) => {
     if (currentFolder.type === File) {
       if (page == 1) {
         if (localStorage.getItem(currentFolder.name)) {
-          console.log(currentFolder.name);
           setFiles(
             JSON.parse(localStorage.getItem(currentFolder.name) || "{}")
           );
@@ -115,7 +114,6 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: any) => {
   };
 
   const handleDirectory = (folder: any) => {
-    console.log(folder);
     //value.payload.request
     dispatch(addDirectory({ folder: folder }));
   };
@@ -146,7 +144,7 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: any) => {
             return (
               <div
                 key={index}
-                onClick={() => {
+                onContextMenu={() => {
                   setMenuOpen({
                     ...menuOpen,
                     key: index,
@@ -207,7 +205,11 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: any) => {
             return (
               <div
                 key={index}
-                onClick={() => {
+                onDoubleClick={() => {
+                  handleDirectory(folder);
+                  setCurrentFolder(folder);
+                }}
+                onContextMenu={() => {
                   setMenuOpen({
                     ...menuOpen,
                     key: index,
@@ -223,6 +225,10 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: any) => {
                       onClick={() => {
                         handleDirectory(folder);
                         setCurrentFolder(folder);
+                        setMenuOpen({
+                          ...menuOpen,
+                          isOpen: !menuOpen.isOpen,
+                        });
                       }}
                     >
                       Open
@@ -231,6 +237,10 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: any) => {
                       className="options"
                       onClick={() => {
                         handleInfo(folder);
+                        setMenuOpen({
+                          ...menuOpen,
+                          isOpen: !menuOpen.isOpen,
+                        });
                       }}
                     >
                       Get Info
@@ -239,6 +249,10 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: any) => {
                       className="options delete"
                       onClick={() => {
                         handleDelete(folder);
+                        //   setMenuOpen({
+                        //     ...menuOpen,
+                        //     isOpen: !menuOpen.isOpen,
+                        //   });
                       }}
                     >
                       Delete

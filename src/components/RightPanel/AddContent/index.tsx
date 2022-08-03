@@ -76,6 +76,7 @@ const AddContent = (props: any) => {
               autoFocus
               className="toggle_btn"
               onChange={handleChange("type")}
+              checked
             />
             <label>Folder</label>
           </div>

@@ -48,7 +48,9 @@ const Path = () => {
 
       <div className="complete-path">
         {currentDirectory?.map((directory, index) => {
-          return <span>{directory}/</span>;
+          if (index == currentDirectory.length - 1)
+            return <span>{directory}</span>;
+          else return <span>{directory}/</span>;
         })}
       </div>
     </div>

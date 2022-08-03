@@ -16,8 +16,6 @@ const SystemTree = ({ setCurrentFolder }: any) => {
 
   const folders = useSelector((state: RootState) => state.folders.folders);
 
-  console.log("folders", folders);
-
   const handleClick = (folder: any) => {
     setCurrentFolder(folder);
     //update the directory of the folder
