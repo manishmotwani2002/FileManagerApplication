@@ -1,8 +1,9 @@
 import { useState } from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import SystemTree from "./components/FileSystemTree/index";
+
+import SystemTree from "./components/FileSystemTree/SystemTree";
 import RightPanel from "./components/RightPanel";
+
+import "./App.css";
 
 const App = () => {
   const [currentFolder, setCurrentFolder] = useState({
