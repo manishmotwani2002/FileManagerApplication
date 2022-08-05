@@ -7,7 +7,7 @@ import { addFolder } from "../../../store/folderSlice";
 import "./index.css";
 
 const AddContent = (props: any) => {
-  const { setOpenModal } = props;
+  const { setOpenModal, setFolders } = props;
 
   const count = useSelector((state: RootState) => state.folders);
   const currentDirectory = useSelector(
@@ -32,6 +32,11 @@ const AddContent = (props: any) => {
     e.preventDefault();
     dispatch(addFolder({ inputContent, currentDirectory }));
     setOpenModal(false);
+    setFolders(
+      localStorage.getItem("folders")
+        ? JSON.parse(localStorage.getItem("folders") || "{}")
+        : []
+    );
   };
 
   return (

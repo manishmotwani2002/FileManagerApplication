@@ -5,6 +5,7 @@ import AddContent from "../AddContent";
 import FileCard from "../FilesAndFoldersCards/FileCard";
 import FolderCard from "../FilesAndFoldersCards/FolderCard";
 import FolderInfo from "../FilesAndFoldersCards/FolderInfo";
+import NotFound from "../../../assets/notFound.webp";
 
 import type { RootState } from "../../../store/store";
 import { deleteFolder } from "../../../store/folderSlice";
@@ -27,7 +28,13 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: any) => {
     isOpen: false,
     key: 0,
   });
+  const [search, setSearch] = useState(false);
 
+  const [folders, setFolders] = useState(
+    localStorage.getItem("folders")
+      ? JSON.parse(localStorage.getItem("folders") || "{}")
+      : []
+  );
   const [filteredFolders, setFilteredFolders] = useState([]);
   const [folderInfo, setFolderInfo] = useState({});
   const [showInfo, setShowInfo] = useState(false);
@@ -36,10 +43,6 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: any) => {
     (state: RootState) => state.directory.directory
   );
   const dispatch = useDispatch();
-
-  const folders = localStorage.getItem("folders")
-    ? JSON.parse(localStorage.getItem("folders") || "{}")
-    : [];
 
   const nestedFolders = folders.filter(function (folder: any) {
     return (
@@ -103,7 +106,10 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: any) => {
       });
 
       setFilteredFolders(selectedFolder);
-    }, 3000);
+    }, 1000);
+
+    if (searchQuery.length > 0) setSearch(true);
+    if (searchQuery.length == 0) setSearch(false);
 
     myDebouncedFunction(searchQuery);
   }, [searchQuery]);
@@ -111,6 +117,11 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: any) => {
   const handleDelete = (folder: any) => {
     //call the reducer
     dispatch(deleteFolder(folder));
+    setFolders(
+      localStorage.getItem("folders")
+        ? JSON.parse(localStorage.getItem("folders") || "{}")
+        : []
+    );
   };
 
   const handleDirectory = (folder: any) => {
@@ -187,9 +198,16 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: any) => {
           })}
         </div>
       )}
-      {filteredFolders.length === 0 && (
+      {filteredFolders.length == 0 && search && (
+        <div className="wrapper-div">
+          <img src={NotFound} alt="" className="Notfound-img" />
+        </div>
+      )}
+      {filteredFolders.length === 0 && !search && (
         <div className="files-container" onScroll={(e) => handleScroll(e)}>
-          {modalOpen && <AddContent setOpenModal={setModalOpen} />}
+          {modalOpen && (
+            <AddContent setFolders={setFolders} setOpenModal={setModalOpen} />
+          )}
 
           <div
             className="add-item folder-item"

@@ -25,7 +25,7 @@ const RightPanel = ({ currentFolder, setCurrentFolder }: any) => {
           <input
             className="input"
             type="text"
-            placeholder="enter your query here!!"
+            placeholder="Search Files & Folders"
             onChange={(e) => {
               handleChange(e);
             }}
