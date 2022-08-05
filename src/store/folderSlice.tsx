@@ -38,7 +38,7 @@ export const foldersSlice = createSlice({
         localStorage.getItem("folders") || "{}"
       );
 
-      const updatedFolders = currentFolders.filter((folder: any) => {
+      const updatedFolders = currentFolders.filter((folder: Folder) => {
         return folder.folderId !== actions.payload.folderId;
       });
       localStorage.setItem("folders", JSON.stringify(updatedFolders));

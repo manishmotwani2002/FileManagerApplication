@@ -3,8 +3,6 @@ import { useState } from "react";
 import SystemTree from "./components/FileSystemTree";
 import RightPanel from "./components/RightPanel";
 
-import { Folder } from "./types/folderTypes";
-
 import "./app.css";
 
 const App = () => {

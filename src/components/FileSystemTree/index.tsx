@@ -1,4 +1,4 @@
-import { SetStateAction, useState } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import SystemTreeItem from "./SystemTreeItem";
@@ -22,18 +22,18 @@ const SystemTree = ({ setCurrentFolder }: Props) => {
 
   const folders = useSelector((state: RootState) => state.folders.folders);
 
-  const handleClick = (folder: any) => {
+  const handleClick = (folder: Folder) => {
     setCurrentFolder(folder);
     //update the directory of the folder
     dispatch(addDirectory({ folder: folder, request: "root" }));
   };
 
   const handleHideMenu = () => {
-    const closeMenu: any = document.querySelector(".system-tree");
-    closeMenu.style.display = "none";
+    const closeMenu = document.querySelector<HTMLInputElement>(".system-tree");
+    if (closeMenu !== null) closeMenu.style.display = "none";
   };
 
-  const handleChildren = (clickedFolder: any) => {
+  const handleChildren = (clickedFolder: Folder) => {
     const currentDirectory = [...clickedFolder.directory, clickedFolder.name];
 
     const childFolders: any = folders.filter((folder) => {
@@ -62,11 +62,11 @@ const SystemTree = ({ setCurrentFolder }: Props) => {
           />
         </svg>
         <div>
-          {folders.map((item: any, index: number) => {
+          {folders.map((item: Folder, index: number) => {
             if (JSON.stringify(item.directory) === JSON.stringify(["root"])) {
               return (
                 <div
-                  key={item}
+                  key={item.folderId}
                   onClick={() => {
                     handleClick(item);
                     handleChildren(item);
@@ -78,11 +78,11 @@ const SystemTree = ({ setCurrentFolder }: Props) => {
             }
           })}
 
-          {currentChildFolders?.map((child: any, index: number) => {
+          {currentChildFolders?.map((child: Folder, index: number) => {
             return (
               <div
                 className="children-item"
-                key={child}
+                key={child.folderId}
                 onClick={() => {
                   handleClick(child);
                   handleChildren(child);

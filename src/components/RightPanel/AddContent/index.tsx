@@ -4,11 +4,16 @@ import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "../../../store/store";
 import { addFolder } from "../../../store/folderSlice";
 
+import { Folder } from "../../../types/folderTypes";
+
 import "./index.css";
 
-const AddContent = (props: any) => {
-  const { setOpenModal, setFolders } = props;
+type Props = {
+  setFolders: (active: Folder) => void;
+  setOpenModal: (active: boolean) => void;
+};
 
+const AddContent = ({ setOpenModal, setFolders }: Props) => {
   const count = useSelector((state: RootState) => state.folders);
   const currentDirectory = useSelector(
     (state: RootState) => state.directory.directory
@@ -24,11 +29,12 @@ const AddContent = (props: any) => {
     directory: currentDirectory,
   });
 
-  const handleChange = (key: string) => (e: any) => {
-    setInputContent({ ...inputContent, [key]: e.target.value });
-  };
+  const handleChange =
+    (key: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
+      setInputContent({ ...inputContent, [key]: e.target.value });
+    };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(addFolder({ inputContent, currentDirectory }));
     setOpenModal(false);
@@ -86,7 +92,7 @@ const AddContent = (props: any) => {
             <label>Folder</label>
           </div>
         </div>
-        <form className="create-form" onSubmit={(e: any) => handleSubmit(e)}>
+        <form className="create-form" onSubmit={(e) => handleSubmit(e)}>
           <input
             className="form-input"
             type="text"

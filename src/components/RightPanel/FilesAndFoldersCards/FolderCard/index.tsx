@@ -1,6 +1,11 @@
 import "./index.css";
 
-const FolderCard = ({ folderName, folderType }: any) => {
+type Props = {
+  folderName: string;
+  folderType: string;
+};
+
+const FolderCard = ({ folderName, folderType }: Props) => {
   let icon;
   if (folderType === "File") {
     icon = (

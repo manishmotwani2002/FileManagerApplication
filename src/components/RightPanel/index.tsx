@@ -3,18 +3,20 @@ import { useState } from "react";
 import Path from "./Path/Path";
 import Content from "./FolderContent";
 
+import { Folder } from "../../types/folderTypes";
+
 import "./index.css";
 
-const RightPanel = ({ currentFolder, setCurrentFolder }: any) => {
+type Props = {
+  currentFolder: Folder;
+  setCurrentFolder: (active: Folder) => void;
+};
+
+const RightPanel = ({ currentFolder, setCurrentFolder }: Props) => {
   const [searchQuery, setSearchQuery] = useState("");
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
-  };
-
-  const handleMenuDisplay = (folder: any) => {
-    const sideMenu: any = document.querySelector("#menu");
-    sideMenu.style.display = "block";
   };
 
   return (

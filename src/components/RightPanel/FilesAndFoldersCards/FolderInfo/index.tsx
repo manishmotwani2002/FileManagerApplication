@@ -1,8 +1,16 @@
 import "./index.css";
 
-const FolderInfo = (props: any) => {
-  const { selectedFolder, setShowInfo } = props;
+import { Folder } from "../../../../types/folderTypes";
 
+type Dispatch<A> = (value: A) => void;
+type SetStateAction<S> = S | ((prevState: S) => S);
+
+type Props = {
+  selectedFolder: Folder;
+  setShowInfo: Dispatch<SetStateAction<boolean>>;
+};
+
+const FolderInfo = ({ selectedFolder, setShowInfo }: Props) => {
   return (
     <div className="getInfoBackground ">
       <div className="getInfoModal">
@@ -16,7 +24,7 @@ const FolderInfo = (props: any) => {
               stroke="currentColor"
               stroke-width="2"
               onClick={() => {
-                setShowInfo();
+                setShowInfo(false);
               }}
             >
               <path

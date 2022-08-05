@@ -15,9 +15,9 @@ const Path = () => {
   const deleteDirectories = () => {
     dispatch(removeDirectory(currentDirectory));
   };
-  const handleMenuDisplay = (folder: any) => {
-    const sideMenu: any = document.querySelector("#menu");
-    sideMenu.style.display = "block";
+  const handleMenuDisplay = () => {
+    const sideMenu = document.querySelector<HTMLInputElement>("#menu");
+    if (sideMenu !== null) sideMenu.style.display = "block";
   };
 
   return (

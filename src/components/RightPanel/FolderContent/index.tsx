@@ -14,9 +14,17 @@ import { addDirectory } from "../../../store/directorySlice";
 import { getPhotos } from "../../../utils/folderPhotos";
 import { debounce } from "../../../utils/debounce";
 
+import { Folder } from "../../../types/folderTypes";
+
 import "./index.css";
 
-const Content = ({ currentFolder, setCurrentFolder, searchQuery }: any) => {
+type Props = {
+  currentFolder: Folder;
+  setCurrentFolder: (active: Folder) => void;
+  searchQuery: string;
+};
+
+const Content = ({ currentFolder, setCurrentFolder, searchQuery }: Props) => {
   const File = "File";
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -36,7 +44,15 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: any) => {
       : []
   );
   const [filteredFolders, setFilteredFolders] = useState([]);
-  const [folderInfo, setFolderInfo] = useState({});
+  const [folderInfo, setFolderInfo] = useState({
+    type: "Folder",
+    name: "root",
+    date: "01/01/2002",
+    creator: "Manish",
+    size: "100",
+    directory: ["root"],
+    folderId: 100,
+  });
   const [showInfo, setShowInfo] = useState(false);
 
   const currentDirectory = useSelector(
@@ -44,7 +60,7 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: any) => {
   );
   const dispatch = useDispatch();
 
-  const nestedFolders = folders.filter(function (folder: any) {
+  const nestedFolders = folders.filter(function (folder: Folder) {
     return (
       JSON.stringify(folder.directory) === JSON.stringify(currentDirectory)
     );
@@ -89,7 +105,7 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: any) => {
     }
   }, [page, currentFolder]);
 
-  const handleScroll = (event: any) => {
+  const handleScroll = (event: React.UIEvent<HTMLDivElement, UIEvent>) => {
     const { scrollTop, clientHeight, scrollHeight } = event.currentTarget;
 
     if (scrollHeight - scrollTop <= clientHeight + 10) {
@@ -100,7 +116,7 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: any) => {
   useEffect(() => {
     let selectedFolder;
     const myDebouncedFunction = debounce((query) => {
-      selectedFolder = nestedFolders.filter((folder: any) => {
+      selectedFolder = nestedFolders.filter((folder: Folder) => {
         if (query.length > 0)
           return folder.name.toLowerCase().includes(query.toLowerCase());
       });
@@ -114,7 +130,7 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: any) => {
     myDebouncedFunction(searchQuery);
   }, [searchQuery]);
 
-  const handleDelete = (folder: any) => {
+  const handleDelete = (folder: Folder) => {
     //call the reducer
     dispatch(deleteFolder(folder));
     setFolders(
@@ -124,15 +140,20 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: any) => {
     );
   };
 
-  const handleDirectory = (folder: any) => {
+  const handleDirectory = (folder: Folder) => {
     //value.payload.request
     dispatch(addDirectory({ folder: folder }));
   };
 
   const handleClose = () => {
-    const concernedElement: any = document.querySelector(".image-container");
-    document.addEventListener("mousedown", (e: any) => {
-      if (concernedElement.contains(e.target)) {
+    const concernedElement =
+      document.querySelector<HTMLInputElement>(".image-container");
+
+    document.addEventListener("mousedown", ({ target }: MouseEvent): void => {
+      if (
+        concernedElement !== null &&
+        concernedElement.contains(target as HTMLInputElement)
+      ) {
         //clicked inside
       } else {
         setFileModal("");
@@ -142,7 +163,7 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: any) => {
     return <div></div>;
   };
 
-  const handleInfo = (selectedFolder: any) => {
+  const handleInfo = (selectedFolder: Folder) => {
     setFolderInfo(selectedFolder);
     setShowInfo(true);
   };
@@ -151,7 +172,8 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: any) => {
     <div>
       {filteredFolders.length > 0 && (
         <div className="files-container">
-          {filteredFolders?.map((folder: any, index: number) => {
+          {filteredFolders?.map((folder: Folder, index: number) => {
+            const { name, type } = folder;
             return (
               <div
                 key={index}
@@ -163,7 +185,7 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: any) => {
                   });
                 }}
               >
-                <FolderCard folderName={folder.name} folderType={folder.type} />
+                <FolderCard folderName={name} folderType={type} />
                 {menuOpen.isOpen && index === menuOpen.key && (
                   <div className="options-section" key={index}>
                     <div
@@ -218,7 +240,7 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: any) => {
             +
           </div>
 
-          {nestedFolders.map((folder: any, index: number) => {
+          {nestedFolders.map((folder: Folder, index: number) => {
             let currentIndex = index;
             return (
               <div
@@ -267,10 +289,6 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: any) => {
                       className="options delete"
                       onClick={() => {
                         handleDelete(folder);
-                        //   setMenuOpen({
-                        //     ...menuOpen,
-                        //     isOpen: !menuOpen.isOpen,
-                        //   });
                       }}
                     >
                       Delete

@@ -1,6 +1,10 @@
 import "./index.css";
 
-const FileCard = ({ imageLink }: any) => {
+type Props = {
+  imageLink: string;
+};
+
+const FileCard = ({ imageLink }: Props) => {
   return (
     <div className="file-card">
       <img src={imageLink} alt="File Image" />
