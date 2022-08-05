@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import SystemTree from "./components/FileSystemTree/SystemTree";
+import SystemTree from "./components/FileSystemTree";
 import RightPanel from "./components/RightPanel";
 
 import "./App.css";
