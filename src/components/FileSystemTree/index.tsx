@@ -1,14 +1,20 @@
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import SystemTreeItem from "./SystemTreeItem";
+
+import { Folder } from "../../types/folderTypes";
 
 import type { RootState } from "../../store/store";
 import { addDirectory } from "../../store/directorySlice";
 
 import "./index.css";
 
-const SystemTree = ({ setCurrentFolder }: any) => {
+type Props = {
+  setCurrentFolder: (active: Folder) => void;
+};
+
+const SystemTree = ({ setCurrentFolder }: Props) => {
   const [currentChildFolders, setCurrentChildFolders] = useState<[] | null>(
     null
   );

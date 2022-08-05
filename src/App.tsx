@@ -3,12 +3,19 @@ import { useState } from "react";
 import SystemTree from "./components/FileSystemTree";
 import RightPanel from "./components/RightPanel";
 
-import "./App.css";
+import { Folder } from "./types/folderTypes";
+
+import "./app.css";
 
 const App = () => {
   const [currentFolder, setCurrentFolder] = useState({
     type: "Folder",
     name: "root",
+    date: "01/01/2002",
+    creator: "Manish",
+    size: "100",
+    directory: ["root"],
+    folderId: 100,
   });
   document.addEventListener("contextmenu", (event) => event.preventDefault());
   return (
