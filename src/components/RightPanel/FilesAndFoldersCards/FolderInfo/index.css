@@ -1,4 +1,4 @@
-.getInfoModal {
+.FolderInfo02GetInfoModal {
   max-width: 60%;
   border-radius: 12px;
   background: #fff;
@@ -14,7 +14,7 @@
   transform: translate(-50%, -50%);
 }
 
-.getInfoBackground {
+.FolderInfo01GetInfoBackground {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -25,7 +25,7 @@
   z-index: 2;
 }
 
-.displayStyle {
+.FolderInfo04DisplayStyle {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -33,7 +33,13 @@
   gap: 2rem;
 }
 
+.FolderInfo02GetInfoModal {
+  display: flex;
+  margin-left: auto;
+}
+
 .info-cross {
   display: flex;
   margin-left: auto;
+  height: 10px;
 }

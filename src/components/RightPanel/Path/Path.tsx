@@ -21,14 +21,14 @@ const Path = () => {
   };
 
   return (
-    <div className="path-container">
+    <div className="Path01PathContainer">
       <div id="hamburger-icon" onClick={handleMenuDisplay}>
         <div className="bar1"></div>
         <div className="bar2"></div>
         <div className="bar3"></div>
       </div>
 
-      <div className="icon">
+      <div className="Path02Icon">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className=" "

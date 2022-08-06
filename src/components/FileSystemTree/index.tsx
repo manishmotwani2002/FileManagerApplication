@@ -29,7 +29,8 @@ const SystemTree = ({ setCurrentFolder }: Props) => {
   };
 
   const handleHideMenu = () => {
-    const closeMenu = document.querySelector<HTMLInputElement>(".system-tree");
+    const closeMenu =
+      document.querySelector<HTMLInputElement>(".App03SystemTree");
     if (closeMenu !== null) closeMenu.style.display = "none";
   };
 

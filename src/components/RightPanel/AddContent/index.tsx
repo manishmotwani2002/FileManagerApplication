@@ -46,9 +46,9 @@ const AddContent = ({ setOpenModal, setFolders }: Props) => {
   };
 
   return (
-    <div className="modal_background">
-      <div className="modal_container">
-        <div className="form-header">
+    <div className="AddContent01ModalBackground">
+      <div className="AddContent02ModalContainer">
+        <div className="AddContent03FormHeader">
           <div className="heading">Create New</div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -68,14 +68,14 @@ const AddContent = ({ setOpenModal, setFolders }: Props) => {
             />
           </svg>
         </div>
-        <div className="wrapper">
-          <div className="toggle_btn_wrapper">
+        <div className="AddContent04Wrapper">
+          <div className="AddContent05ToggleBtnWrapper">
             <input
               type="radio"
               id="file"
               value="File"
               name="type"
-              className="toggle_btn"
+              className="AddContent06ToggleBtn"
               onChange={handleChange("type")}
             />
             <label>File</label>
@@ -85,16 +85,19 @@ const AddContent = ({ setOpenModal, setFolders }: Props) => {
               value="Folder"
               name="type"
               autoFocus
-              className="toggle_btn"
+              className="AddContent06ToggleBtn"
               onChange={handleChange("type")}
               checked
             />
             <label>Folder</label>
           </div>
         </div>
-        <form className="create-form" onSubmit={(e) => handleSubmit(e)}>
+        <form
+          className="AddContent07CreateForm"
+          onSubmit={(e) => handleSubmit(e)}
+        >
           <input
-            className="form-input"
+            className="AddContent08FormInput"
             type="text"
             placeholder="Name"
             autoFocus
@@ -102,19 +105,19 @@ const AddContent = ({ setOpenModal, setFolders }: Props) => {
             onChange={handleChange("name")}
           />
           <input
-            className="form-input"
+            className="AddContent08FormInput"
             type="text"
             placeholder="Creator"
             onChange={handleChange("creator")}
           />
           <input
-            className="form-input"
+            className="AddContent08FormInput"
             type="text"
             placeholder="Size"
             onChange={handleChange("size")}
           />
           <input
-            className="form-input"
+            className="AddContent08FormInput"
             type="date"
             placeholder="Date(DD/MM/YYYY)"
             onChange={handleChange("date")}

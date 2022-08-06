@@ -1,4 +1,4 @@
-.path-container {
+.Path01PathContainer {
   display: flex;
   gap: 1rem;
   font-size: larger;
@@ -6,7 +6,7 @@
   flex-direction: row;
 }
 
-.icon {
+.Path02Icon {
   height: 2rem !important;
   width: 2rem !important;
   cursor: pointer;

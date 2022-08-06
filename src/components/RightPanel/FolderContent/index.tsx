@@ -171,7 +171,7 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: Props) => {
   return (
     <div>
       {filteredFolders.length > 0 && (
-        <div className="files-container">
+        <div className="Content01FilesContainer">
           {filteredFolders?.map((folder: Folder, index: number) => {
             const { name, type } = folder;
             return (
@@ -187,9 +187,9 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: Props) => {
               >
                 <FolderCard folderName={name} folderType={type} />
                 {menuOpen.isOpen && index === menuOpen.key && (
-                  <div className="options-section" key={index}>
+                  <div className="Content02OptionsDiv" key={index}>
                     <div
-                      className="options"
+                      className="Content03Options"
                       onClick={() => {
                         handleDirectory(folder);
                         setCurrentFolder(folder);
@@ -198,7 +198,7 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: Props) => {
                       Open
                     </div>
                     <div
-                      className="options"
+                      className="Content03Options"
                       onClick={() => {
                         handleInfo(folder);
                       }}
@@ -206,7 +206,7 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: Props) => {
                       Get Info
                     </div>
                     <div
-                      className="options delete"
+                      className="Content03Options Content04Delete"
                       onClick={() => {
                         handleDelete(folder);
                       }}
@@ -221,18 +221,21 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: Props) => {
         </div>
       )}
       {filteredFolders.length == 0 && search && (
-        <div className="wrapper-div">
-          <img src={NotFound} alt="" className="Notfound-img" />
+        <div className="Content05ImgWrapper">
+          <img src={NotFound} alt="" className="Content06NotFoundImg" />
         </div>
       )}
       {filteredFolders.length === 0 && !search && (
-        <div className="files-container" onScroll={(e) => handleScroll(e)}>
+        <div
+          className="Content01FilesContainer"
+          onScroll={(e) => handleScroll(e)}
+        >
           {modalOpen && (
             <AddContent setFolders={setFolders} setOpenModal={setModalOpen} />
           )}
 
           <div
-            className="add-item folder-item"
+            className="Content07AddItem Content08FolderItem"
             onClick={() => {
               handleAdd();
             }}
@@ -259,9 +262,9 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: Props) => {
               >
                 <FolderCard folderName={folder.name} folderType={folder.type} />
                 {menuOpen.isOpen && index === menuOpen.key && (
-                  <div className="options-section" key={index}>
+                  <div className="Content02OptionsDiv" key={index}>
                     <div
-                      className="options"
+                      className="Content03Options"
                       onClick={() => {
                         handleDirectory(folder);
                         setCurrentFolder(folder);
@@ -274,7 +277,7 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: Props) => {
                       Open
                     </div>
                     <div
-                      className="options"
+                      className="Content03Options"
                       onClick={() => {
                         handleInfo(folder);
                         setMenuOpen({
@@ -286,7 +289,7 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: Props) => {
                       Get Info
                     </div>
                     <div
-                      className="options delete"
+                      className="Content03Options Content04Delete"
                       onClick={() => {
                         handleDelete(folder);
                       }}
@@ -304,11 +307,11 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: Props) => {
           )}
 
           {currentFolder.type === "File" && fileModal.length > 0 && (
-            <div className="modalBackground">
+            <div className="Content09ModalBackground">
               <img
                 src={fileModal}
                 alt="Photo in Dialog"
-                className="image-container"
+                className="Content10ImgContainer"
               />
               <div>{handleClose()}</div>
             </div>
@@ -318,7 +321,7 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: Props) => {
             files?.map((file, index) => {
               return (
                 <div
-                  className="folder-item"
+                  className="Content08FolderItem"
                   key={index}
                   onClick={() => {
                     setFileModal(file.urls.full);
@@ -329,7 +332,7 @@ const Content = ({ currentFolder, setCurrentFolder, searchQuery }: Props) => {
               );
             })}
           {currentFolder.type === "File" && loading.length > 0 && (
-            <div className="loader"></div>
+            <div className="Content11Loader"></div>
           )}
         </div>
       )}

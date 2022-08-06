@@ -12,10 +12,10 @@ type Props = {
 
 const FolderInfo = ({ selectedFolder, setShowInfo }: Props) => {
   return (
-    <div className="getInfoBackground ">
-      <div className="getInfoModal">
+    <div className="FolderInfo01GetInfoBackground ">
+      <div className="FolderInfo02GetInfoModal">
         <div>
-          <div className="info-cross">
+          <div className="">
             <svg
               xmlns="http://wwlw.w3.org/2000/svg"
               className="icon info-cross"
@@ -34,19 +34,19 @@ const FolderInfo = ({ selectedFolder, setShowInfo }: Props) => {
               />
             </svg>
           </div>
-          <div className="displayStyle">
+          <div className="FolderInfo04DisplayStyle">
             <span>Folder Name:</span>
             <h3>{selectedFolder.name}</h3>
           </div>
-          <div className="displayStyle">
+          <div className="FolderInfo04DisplayStyle">
             <span>Folder Size:</span>
             <h3>{selectedFolder.size}</h3>
           </div>
-          <div className="displayStyle">
+          <div className="FolderInfo04DisplayStyle">
             <span>Folder Creator:</span>
             <h3>{selectedFolder.creator}</h3>
           </div>
-          <div className="displayStyle">
+          <div className="FolderInfo04DisplayStyle">
             <span>Folder Date:</span>
             <h3>{selectedFolder.date}</h3>
           </div>

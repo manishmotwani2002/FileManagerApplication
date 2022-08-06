@@ -35,10 +35,10 @@ const FolderCard = ({ folderName, folderType }: Props) => {
     );
   }
   return (
-    <div className="folder-wrapper">
-      <div className="folder-icon">{icon}</div>
+    <div className="FolderCard01FolderWrapper">
+      <div className="FolderCard02FolderIcon">{icon}</div>
 
-      <div className="folder-name">{folderName}</div>
+      <div className="FolderCard03FolderName">{folderName}</div>
     </div>
   );
 };

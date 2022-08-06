@@ -1,4 +1,4 @@
-.root {
+.App01Root {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: gray;
   display: flex;
@@ -11,26 +11,18 @@
   position: relative;
 }
 
-.right-panel {
+.App02RightPanel {
   width: 100%;
   margin-left: 2rem;
 }
 
-.system-tree {
+.App03SystemTree {
   width: 20%;
   min-height: 100%;
   background-color: #edf2f7;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-top-right-radius: 1.5rem;
   border-bottom-right-radius: 1.5rem;
-}
-
-@media only screen and (max-width: 600px) {
-  .system-tree {
-    min-width: 60%;
-    position: absolute;
-    z-index: 2;
-  }
 }
 
 .children-item {
@@ -77,7 +69,15 @@
     font-size: medium;
     width: 100%;
   }
-  .right-panel {
+  .App02RightPanel {
     margin: 0;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .App03SystemTree {
+    min-width: 60%;
+    position: absolute;
+    z-index: 2;
   }
 }

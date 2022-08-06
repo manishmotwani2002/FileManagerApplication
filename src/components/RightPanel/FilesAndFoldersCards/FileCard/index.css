@@ -1,4 +1,4 @@
-.file-card {
+.FileCard01FileCard {
   width: 12rem;
   height: 12rem;
   border-style: solid;
@@ -8,18 +8,18 @@
   cursor: pointer;
 }
 
-.file-card:hover {
+.FileCard01FileCard:hover {
   box-shadow: 5px 5px 15px 4px #acacac;
   transition: 0.3s ease-in-out;
 }
 
-.file-card img {
+.FileCard01FileCard img {
   -webkit-transform: scale(1);
   transform: scale(1);
   -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
-.file-card:hover img {
+.FileCard01FileCard:hover img {
   -webkit-transform: scale(1.2);
   transform: scale(1.2);
 }
@@ -40,7 +40,7 @@ img {
 }
 
 @media only screen and (max-width: 600px) {
-  .file-card {
+  .FileCard01FileCard {
     width: 8rem;
     height: 8rem;
   }

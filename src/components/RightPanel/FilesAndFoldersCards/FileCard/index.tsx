@@ -6,7 +6,7 @@ type Props = {
 
 const FileCard = ({ imageLink }: Props) => {
   return (
-    <div className="file-card">
+    <div className="FileCard01FileCard">
       <img src={imageLink} alt="File Image" />
     </div>
   );
